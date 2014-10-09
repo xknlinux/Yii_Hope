@@ -1,0 +1,8374 @@
+cscope 15 $HOME/project/shixi/html/yii/demos/blog/protected -q 0000000472 0000044003
+	@components/Controller.php
+
+1 <?
+php
+
+
+6 ˛as†
+	cC⁄åﬁÀr
+ 
+exãnds
+ 
+	mCC⁄åﬁÀr
+
+
+12 
+public
+ 
+	m$œyout
+='column1';
+
+16 
+public
+ 
+	m$míu
+=
+¨øy
+();
+
+22 
+public
+ 
+	m$bªad¸umbs
+=
+¨øy
+();
+
+	@components/RecentComments.php
+
+1 <?
+php
+
+
+3 
+	gYii
+::
+imp‹t
+('zii.widgets.CPortlet');
+
+5 ˛as†
+	cRe˚¡Commíts
+ 
+exãnds
+ 
+	mCP‹éë
+
+
+7 
+public
+ 
+	m$tôÀ
+='Recent Comments';
+
+8 
+public
+ 
+	m$maxCommíts
+=10;
+
+10 
+public
+ 
+fun˘i⁄
+ 
+	$gëRe˚¡Commíts
+()
+
+12  
+Commít
+::
+	`modñ
+()->
+	`födRe˚¡Commíts
+(
+$this
+->
+maxCommíts
+);
+
+15 
+¥Ÿe˘ed
+ 
+fun˘i⁄
+ 
+	$ªndîC⁄ã¡
+()
+
+17 
+$this
+->
+	`ªndî
+('recentComments');
+
+18 
+	}
+}
+
+	@components/TagCloud.php
+
+1 <?
+php
+
+
+3 
+	gYii
+::
+imp‹t
+('zii.widgets.CPortlet');
+
+5 ˛as†
+	cTagCloud
+ 
+exãnds
+ 
+	mCP‹éë
+
+
+7 
+public
+ 
+	m$tôÀ
+='Tags';
+
+8 
+public
+ 
+	m$maxTags
+=20;
+
+10 
+¥Ÿe˘ed
+ 
+fun˘i⁄
+ 
+	$ªndîC⁄ã¡
+()
+
+12 
+$ègs
+=
+Tag
+::
+	`modñ
+()->
+	`födTagWeights
+(
+$this
+->
+maxTags
+);
+
+14 
+	`f‹óch
+(
+$ègs
+ 
+as
+ 
+$èg
+=>
+$weight
+)
+
+16 
+$lök
+=
+CHtml
+::
+	`lök
+(CHtml::
+	`ícode
+(
+$èg
+), 
+	`¨øy
+('post/index','tag'=>$tag));
+
+17 
+echo
+ 
+CHtml
+::
+	`èg
+('•™', 
+	`¨øy
+(
+
+20 ), 
+$lök
+)."\n";
+
+23 
+	}
+}
+
+	@components/UserIdentity.php
+
+1 <?
+php
+
+
+8 ˛as†
+	cU£rIdítôy
+ 
+exãnds
+ 
+	mCU£rIdítôy
+
+
+10 
+¥iv©e
+ 
+	m$_id
+;
+
+16 
+public
+ 
+fun˘i⁄
+ 
+	$authítiˇã
+()
+
+18 
+$u£r
+=
+U£r
+::
+	`modñ
+()->
+	`föd
+('LOWER(u£∫ame)=?',
+	`¨øy
+(
+	`°πﬁowî
+(
+$this
+->
+u£∫ame
+)));
+
+19 if(
+$u£r
+===
+nuŒ
+)
+
+20 
+$this
+->
+îr‹Code
+=
+£lf
+::
+ERROR_USERNAME_INVALID
+;
+
+21 if(!
+$u£r
+->
+	`vÆid©ePassw‹d
+(
+$this
+->
+∑ssw‹d
+))
+
+22 
+$this
+->
+îr‹Code
+=
+£lf
+::
+ERROR_PASSWORD_INVALID
+;
+
+25 
+$this
+->
+_id
+=
+$u£r
+->
+id
+;
+
+26 
+$this
+->
+u£∫ame
+=
+$u£r
+->username;
+
+27 
+$this
+->
+îr‹Code
+=
+£lf
+::
+ERROR_NONE
+;
+
+29  
+$this
+->
+îr‹Code
+==
+£lf
+::
+ERROR_NONE
+;
+
+35 
+public
+ 
+fun˘i⁄
+ 
+	$gëId
+()
+
+37  
+$this
+->
+_id
+;
+
+38 
+	}
+}
+
+	@components/UserMenu.php
+
+1 <?
+php
+
+
+3 
+	gYii
+::
+imp‹t
+('zii.widgets.CPortlet');
+
+5 ˛as†
+	cU£rMíu
+ 
+exãnds
+ 
+	mCP‹éë
+
+
+7 
+public
+ 
+fun˘i⁄
+ 
+	$öô
+()
+
+9 
+$this
+->
+tôÀ
+=
+CHtml
+::
+	`ícode
+(
+Yii
+::
+	`≠p
+()->
+u£r
+->
+«me
+);
+
+10 
+∑ª¡
+::
+	`öô
+();
+
+13 
+¥Ÿe˘ed
+ 
+fun˘i⁄
+ 
+	$ªndîC⁄ã¡
+()
+
+15 
+$this
+->
+	`ªndî
+('userMenu');
+
+16 
+	}
+}
+
+	@components/views/recentComments.php
+
+1 <
+	gul
+>
+
+2 <?
+php
+ 
+f‹óch
+(
+$this
+->
+	$gëRe˚¡Commíts
+(Ë
+as
+ 
+$commít
+): ?>
+
+3 <
+li
+><?
+php
+ 
+echo
+ 
+$commít
+->
+auth‹Lök
+; ?> 
+⁄
+
+
+4 <?
+php
+ 
+echo
+ 
+CHtml
+::
+	`lök
+(CHtml::
+	`ícode
+(
+$commít
+->
+po°
+->
+tôÀ
+), $commít->
+	`gëUæ
+()); ?>
+
+5 </
+li
+>
+
+6 <?
+php
+ 
+ídf‹óch
+; ?>
+
+7 </
+ul
+>
+
+	@components/views/userMenu.php
+
+1 <
+	gul
+>
+
+2 <
+	gli
+><?
+php
+ 
+echo
+ 
+	gCHtml
+::
+lök
+('Cª©êNew Po°',
+¨øy
+('post/create')); ?></li>
+
+3 <
+	gli
+><?
+php
+ 
+echo
+ 
+	gCHtml
+::
+lök
+('M™agêPo°s',
+¨øy
+('post/admin')); ?></li>
+
+4 <
+	gli
+><?
+php
+ 
+echo
+ 
+	gCHtml
+::
+lök
+('AµrovêCommíts',
+¨øy
+('commít/ödex')Ë. ' (' . 
+	gCommít
+::
+modñ
+()->
+≥ndögCommítCou¡
+ . ')'; ?></li>
+
+5 <
+	gli
+><?
+php
+ 
+echo
+ 
+	gCHtml
+::
+lök
+('Logout',
+¨øy
+('site/logout')); ?></li>
+
+6 </
+	gul
+>
+
+	@config/console.php
+
+1 <?
+php
+
+
+5  
+¨øy
+(
+
+6 'ba£P©h'=>
+dú«me
+(
+__FILE__
+).
+DIRECTORY_SEPARATOR
+.'..',
+
+	@config/main.php
+
+1 <?
+php
+
+
+8  
+¨øy
+(
+
+9 'ba£P©h'=>
+dú«me
+(
+__FILE__
+).
+DIRECTORY_SEPARATOR
+.'..',
+
+13 '¥ñﬂd'=>
+¨øy
+('log'),
+
+16 'imp‹t'=>
+¨øy
+(
+
+24 'comp⁄íts'=>
+¨øy
+(
+
+25 'u£r'=>
+¨øy
+(
+
+27 'ÆlowAutoLogö'=>
+åue
+,
+
+29 'db'=>
+¨øy
+(
+
+44 'îr‹H™dÀr'=>
+¨øy
+(
+
+48 'uæM™agî'=>
+¨øy
+(
+
+50 'ruÀs'=>
+¨øy
+(
+
+56 'log'=>
+¨øy
+(
+
+58 'rouãs'=>
+¨øy
+(
+
+59 
+¨øy
+(
+
+75 '∑øms'=>
+ªquúe
+(
+dú«me
+(
+__FILE__
+).'/params.php'),
+
+	@config/params.php
+
+1 <?
+php
+
+
+4  
+¨øy
+(
+
+16 'commítNìdAµrovÆ'=>
+åue
+,
+
+	@config/test.php
+
+1 <?
+php
+
+
+3  
+	gCM≠
+::
+mîgeAºay
+(
+
+4 
+ªquúe
+(
+dú«me
+(
+__FILE__
+).'/main.php'),
+
+5 
+¨øy
+(
+
+6 'comp⁄íts'=>
+¨øy
+(
+
+7 'fixtuª'=>
+¨øy
+(
+
+10 'db'=>
+¨øy
+(
+
+11 'c⁄√˘i⁄Såög'=>'sqlôe:'.
+dú«me
+(
+__FILE__
+).'/../data/blog-test.db',
+
+	@controllers/CommentController.php
+
+1 <?
+php
+
+
+3 ˛as†
+	cCommítC⁄åﬁÀr
+ 
+exãnds
+ 
+	mC⁄åﬁÀr
+
+
+5 
+public
+ 
+	m$œyout
+='column2';
+
+10 
+¥iv©e
+ 
+	m$_modñ
+;
+
+15 
+public
+ 
+fun˘i⁄
+ 
+	$fûãrs
+()
+
+17  
+	`¨øy
+(
+
+27 
+public
+ 
+fun˘i⁄
+ 
+	$ac˚ssRuÀs
+()
+
+29  
+	`¨øy
+(
+
+30 
+	`¨øy
+('allow',
+
+31 'u£rs'=>
+	`¨øy
+('@'),
+
+33 
+	`¨øy
+('deny',
+
+34 'u£rs'=>
+	`¨øy
+('*'),
+
+37 
+	}
+}
+
+43 
+public
+ 
+fun˘i⁄
+ 
+	$a˘i⁄Upd©e
+()
+
+45 
+$modñ
+=
+$this
+->
+	`lﬂdModñ
+();
+
+46 if(
+	`is£t
+(
+$_POST
+['ajax']) && $_POST['ajax']==='comment-form')
+
+48 
+echo
+ 
+CA˘iveF‹m
+::
+	`vÆid©e
+(
+$modñ
+);
+
+49 
+Yii
+::
+	`≠p
+()->
+	`íd
+();
+
+51 if(
+	`is£t
+(
+$_POST
+['Comment']))
+
+53 
+$modñ
+->
+©åibuãs
+=
+$_POST
+['Comment'];
+
+54 if(
+$modñ
+->
+	`ßve
+())
+
+55 
+$this
+->
+	`ªdúe˘
+(
+	`¨øy
+('index'));
+
+58 
+$this
+->
+	`ªndî
+('upd©e',
+	`¨øy
+(
+
+59 'modñ'=>
+$modñ
+,
+
+61 
+	}
+}
+
+67 
+public
+ 
+fun˘i⁄
+ 
+	$a˘i⁄Dñëe
+()
+
+69 if(
+Yii
+::
+	`≠p
+()->
+ªque°
+->
+isPo°Reque°
+)
+
+72 
+$this
+->
+	`lﬂdModñ
+()->
+	`dñëe
+();
+
+75 if(!
+	`is£t
+(
+$_POST
+['ajax']))
+
+76 
+$this
+->
+	`ªdúe˘
+(
+	`¨øy
+('index'));
+
+79 
+throw
+ 
+√w
+ 
+	`CHâpEx˚±i⁄
+(400,'InvalidÑequest. Please doÇotÑepeatÅhisÑequestágain.');
+
+80 
+	}
+}
+
+85 
+public
+ 
+fun˘i⁄
+ 
+	$a˘i⁄Index
+()
+
+87 
+$d©aProvidî
+=
+√w
+ 
+	`CA˘iveD©aProvidî
+('Commít', 
+	`¨øy
+(
+
+88 '¸ôîü'=>
+	`¨øy
+(
+
+94 
+$this
+->
+	`ªndî
+('ödex',
+	`¨øy
+(
+
+95 'd©aProvidî'=>
+$d©aProvidî
+,
+
+97 
+	}
+}
+
+103 
+public
+ 
+fun˘i⁄
+ 
+	$a˘i⁄Aµrove
+()
+
+105 if(
+Yii
+::
+	`≠p
+()->
+ªque°
+->
+isPo°Reque°
+)
+
+107 
+$commít
+=
+$this
+->
+	`lﬂdModñ
+();
+
+108 
+$commít
+->
+	`≠¥ove
+();
+
+109 
+$this
+->
+	`ªdúe˘
+(
+	`¨øy
+('index'));
+
+112 
+throw
+ 
+√w
+ 
+	`CHâpEx˚±i⁄
+(400,'InvalidÑequest. Please doÇotÑepeatÅhisÑequestágain.');
+
+113 
+	}
+}
+
+119 
+public
+ 
+fun˘i⁄
+ 
+	$lﬂdModñ
+()
+
+121 if(
+$this
+->
+_modñ
+===
+nuŒ
+)
+
+123 if(
+	`is£t
+(
+$_GET
+['id']))
+
+124 
+$this
+->
+_modñ
+=
+Commít
+::
+	`modñ
+()->
+	`födbyPk
+(
+$_GET
+['id']);
+
+125 if(
+$this
+->
+_modñ
+===
+nuŒ
+)
+
+126 
+throw
+ 
+√w
+ 
+	`CHâpEx˚±i⁄
+(404,'TheÑequestedÖage doesÇotÉxist.');
+
+128  
+$this
+->
+_modñ
+;
+
+129 
+	}
+}
+
+	@controllers/PostController.php
+
+1 <?
+php
+
+
+3 ˛as†
+	cPo°C⁄åﬁÀr
+ 
+exãnds
+ 
+	mC⁄åﬁÀr
+
+
+5 
+public
+ 
+	m$œyout
+='column2';
+
+10 
+¥iv©e
+ 
+	m$_modñ
+;
+
+15 
+public
+ 
+fun˘i⁄
+ 
+	$fûãrs
+()
+
+17  
+	`¨øy
+(
+
+27 
+public
+ 
+fun˘i⁄
+ 
+	$ac˚ssRuÀs
+()
+
+29  
+	`¨øy
+(
+
+30 
+	`¨øy
+('allow',
+
+31 'a˘i⁄s'=>
+	`¨øy
+('index','view'),
+
+32 'u£rs'=>
+	`¨øy
+('*'),
+
+34 
+	`¨øy
+('allow',
+
+35 'u£rs'=>
+	`¨øy
+('@'),
+
+37 
+	`¨øy
+('deny',
+
+38 'u£rs'=>
+	`¨øy
+('*'),
+
+41 
+	}
+}
+
+46 
+public
+ 
+fun˘i⁄
+ 
+	$a˘i⁄Võw
+()
+
+48 
+$po°
+=
+$this
+->
+	`lﬂdModñ
+();
+
+49 
+$commít
+=
+$this
+->
+	`√wCommít
+(
+$po°
+);
+
+51 
+$this
+->
+	`ªndî
+('võw',
+	`¨øy
+(
+
+52 'modñ'=>
+$po°
+,
+
+53 'commít'=>
+$commít
+,
+
+55 
+	}
+}
+
+61 
+public
+ 
+fun˘i⁄
+ 
+	$a˘i⁄Cª©e
+()
+
+63 
+$modñ
+=
+√w
+ 
+Po°
+;
+
+64 if(
+	`is£t
+(
+$_POST
+['Post']))
+
+66 
+$modñ
+->
+©åibuãs
+=
+$_POST
+['Post'];
+
+67 if(
+$modñ
+->
+	`ßve
+())
+
+68 
+$this
+->
+	`ªdúe˘
+(
+	`¨øy
+('võw','id'=>
+$modñ
+->
+id
+));
+
+71 
+$this
+->
+	`ªndî
+('¸óã',
+	`¨øy
+(
+
+72 'modñ'=>
+$modñ
+,
+
+74 
+	}
+}
+
+80 
+public
+ 
+fun˘i⁄
+ 
+	$a˘i⁄Upd©e
+()
+
+82 
+$modñ
+=
+$this
+->
+	`lﬂdModñ
+();
+
+83 if(
+	`is£t
+(
+$_POST
+['Post']))
+
+85 
+$modñ
+->
+©åibuãs
+=
+$_POST
+['Post'];
+
+86 if(
+$modñ
+->
+	`ßve
+())
+
+87 
+$this
+->
+	`ªdúe˘
+(
+	`¨øy
+('võw','id'=>
+$modñ
+->
+id
+));
+
+90 
+$this
+->
+	`ªndî
+('upd©e',
+	`¨øy
+(
+
+91 'modñ'=>
+$modñ
+,
+
+93 
+	}
+}
+
+99 
+public
+ 
+fun˘i⁄
+ 
+	$a˘i⁄Dñëe
+()
+
+101 if(
+Yii
+::
+	`≠p
+()->
+ªque°
+->
+isPo°Reque°
+)
+
+104 
+$this
+->
+	`lﬂdModñ
+()->
+	`dñëe
+();
+
+107 if(!
+	`is£t
+(
+$_GET
+['ajax']))
+
+108 
+$this
+->
+	`ªdúe˘
+(
+	`¨øy
+('index'));
+
+111 
+throw
+ 
+√w
+ 
+	`CHâpEx˚±i⁄
+(400,'InvalidÑequest. Please doÇotÑepeatÅhisÑequestágain.');
+
+112 
+	}
+}
+
+117 
+public
+ 
+fun˘i⁄
+ 
+	$a˘i⁄Index
+()
+
+119 
+$¸ôîü
+=
+√w
+ 
+	`CDbCrôîü
+(
+	`¨øy
+(
+
+120 'c⁄dôi⁄'=>'°©us='.
+Po°
+::
+STATUS_PUBLISHED
+,
+
+124 if(
+	`is£t
+(
+$_GET
+['tag']))
+
+125 
+$¸ôîü
+->
+	`addSórchC⁄dôi⁄
+('ègs',
+$_GET
+['tag']);
+
+127 
+$d©aProvidî
+=
+√w
+ 
+	`CA˘iveD©aProvidî
+('Po°', 
+	`¨øy
+(
+
+128 '∑gö©i⁄'=>
+	`¨øy
+(
+
+129 '∑geSize'=>
+Yii
+::
+	`≠p
+()->
+∑øms
+['postsPerPage'],
+
+131 '¸ôîü'=>
+$¸ôîü
+,
+
+134 
+$this
+->
+	`ªndî
+('ödex',
+	`¨øy
+(
+
+135 'd©aProvidî'=>
+$d©aProvidî
+,
+
+137 
+	}
+}
+
+142 
+public
+ 
+fun˘i⁄
+ 
+	$a˘i⁄Admö
+()
+
+144 
+$modñ
+=
+√w
+ 
+	`Po°
+('search');
+
+145 if(
+	`is£t
+(
+$_GET
+['Post']))
+
+146 
+$modñ
+->
+©åibuãs
+=
+$_GET
+['Post'];
+
+147 
+$this
+->
+	`ªndî
+('admö',
+	`¨øy
+(
+
+148 'modñ'=>
+$modñ
+,
+
+150 
+	}
+}
+
+156 
+public
+ 
+fun˘i⁄
+ 
+	$a˘i⁄Sugge°Tags
+()
+
+158 if(
+	`is£t
+(
+$_GET
+['q']Ë&& (
+$keyw‹d
+=
+	`åim
+($_GET['q']))!=='')
+
+160 
+$ègs
+=
+Tag
+::
+	`modñ
+()->
+	`sugge°Tags
+(
+$keyw‹d
+);
+
+161 if(
+$ègs
+!==
+	`¨øy
+())
+
+162 
+echo
+ 
+	`im∂ode
+("\n",
+$ègs
+);
+
+164 
+	}
+}
+
+170 
+public
+ 
+fun˘i⁄
+ 
+	$lﬂdModñ
+()
+
+172 if(
+$this
+->
+_modñ
+===
+nuŒ
+)
+
+174 if(
+	`is£t
+(
+$_GET
+['id']))
+
+176 if(
+Yii
+::
+	`≠p
+()->
+u£r
+->
+isGue°
+)
+
+177 
+$c⁄dôi⁄
+='°©us='.
+Po°
+::
+STATUS_PUBLISHED
+.' OR sètus='.Po°::
+STATUS_ARCHIVED
+;
+
+179 
+$c⁄dôi⁄
+='';
+
+180 
+$this
+->
+_modñ
+=
+Po°
+::
+	`modñ
+()->
+	`födByPk
+(
+$_GET
+['id'], 
+$c⁄dôi⁄
+);
+
+182 if(
+$this
+->
+_modñ
+===
+nuŒ
+)
+
+183 
+throw
+ 
+√w
+ 
+	`CHâpEx˚±i⁄
+(404,'TheÑequestedÖage doesÇotÉxist.');
+
+185  
+$this
+->
+_modñ
+;
+
+186 
+	}
+}
+
+196 
+¥Ÿe˘ed
+ 
+fun˘i⁄
+ 
+	$√wCommít
+(
+$po°
+)
+
+198 
+$commít
+=
+√w
+ 
+Commít
+;
+
+199 if(
+	`is£t
+(
+$_POST
+['ajax']) && $_POST['ajax']==='comment-form')
+
+201 
+echo
+ 
+CA˘iveF‹m
+::
+	`vÆid©e
+(
+$commít
+);
+
+202 
+Yii
+::
+	`≠p
+()->
+	`íd
+();
+
+204 if(
+	`is£t
+(
+$_POST
+['Comment']))
+
+206 
+$commít
+->
+©åibuãs
+=
+$_POST
+['Comment'];
+
+207 if(
+$po°
+->
+	`addCommít
+(
+$commít
+))
+
+209 if(
+$commít
+->
+°©us
+==
+Commít
+::
+STATUS_PENDING
+)
+
+210 
+Yii
+::
+	`≠p
+()->
+u£r
+->
+	`£tFœsh
+('commentSubmitted','Thank you for your comment. Your comment will beÖosted once it isápproved.');
+
+211 
+$this
+->
+	`ª‰esh
+();
+
+214  
+$commít
+;
+
+215 
+	}
+}
+
+	@controllers/SiteController.php
+
+1 <?
+php
+
+
+3 ˛as†
+	cSôeC⁄åﬁÀr
+ 
+exãnds
+ 
+	mC⁄åﬁÀr
+
+
+5 
+public
+ 
+	m$œyout
+='column1';
+
+10 
+public
+ 
+fun˘i⁄
+ 
+	$a˘i⁄s
+()
+
+12  
+	`¨øy
+(
+
+14 'ˇ±cha'=>
+	`¨øy
+(
+
+20 '∑ge'=>
+	`¨øy
+(
+
+29 
+public
+ 
+fun˘i⁄
+ 
+	$a˘i⁄Eº‹
+()
+
+31 if(
+$îr‹
+=
+Yii
+::
+	`≠p
+()->
+îr‹H™dÀr
+->
+îr‹
+)
+
+33 if(
+Yii
+::
+	`≠p
+()->
+ªque°
+->
+isAjaxReque°
+)
+
+34 
+echo
+ 
+$îr‹
+['message'];
+
+36 
+$this
+->
+	`ªndî
+('îr‹', 
+$îr‹
+);
+
+38 
+	}
+}
+
+43 
+public
+ 
+fun˘i⁄
+ 
+	$a˘i⁄C⁄è˘
+()
+
+45 
+$modñ
+=
+√w
+ 
+C⁄è˘F‹m
+;
+
+46 if(
+	`is£t
+(
+$_POST
+['ContactForm']))
+
+48 
+$modñ
+->
+©åibuãs
+=
+$_POST
+['ContactForm'];
+
+49 if(
+$modñ
+->
+	`vÆid©e
+())
+
+51 
+$hódîs
+="From: {$model->email}\r\nReply-To: {$model->email}";
+
+52 
+	`maû
+(
+Yii
+::
+	`≠p
+()->
+∑øms
+['admöEmaû'],
+$modñ
+->
+subje˘
+,$modñ->
+body
+,
+$hódîs
+);
+
+53 
+Yii
+::
+	`≠p
+()->
+u£r
+->
+	`£tFœsh
+('contact','Thank you for contacting us. We willÑespondÅo youás soonásÖossible.');
+
+54 
+$this
+->
+	`ª‰esh
+();
+
+57 
+$this
+->
+	`ªndî
+('c⁄è˘',
+	`¨øy
+('modñ'=>
+$modñ
+));
+
+58 
+	}
+}
+
+63 
+public
+ 
+fun˘i⁄
+ 
+	$a˘i⁄Logö
+()
+
+65 i‡(!
+	`deföed
+('CRYPT_BLOWFISH')||!
+CRYPT_BLOWFISH
+)
+
+66 
+throw
+ 
+√w
+ 
+	`CHâpEx˚±i⁄
+(500,"ThisápplicationÑequiresÅhat PHP was compiled with Blowfish support for crypt().");
+
+68 
+$modñ
+=
+√w
+ 
+LogöF‹m
+;
+
+71 if(
+	`is£t
+(
+$_POST
+['ajax']) && $_POST['ajax']==='login-form')
+
+73 
+echo
+ 
+CA˘iveF‹m
+::
+	`vÆid©e
+(
+$modñ
+);
+
+74 
+Yii
+::
+	`≠p
+()->
+	`íd
+();
+
+78 if(
+	`is£t
+(
+$_POST
+['LoginForm']))
+
+80 
+$modñ
+->
+©åibuãs
+=
+$_POST
+['LoginForm'];
+
+82 if(
+$modñ
+->
+	`vÆid©e
+(Ë&& $modñ->
+	`logö
+())
+
+83 
+$this
+->
+	`ªdúe˘
+(
+Yii
+::
+	`≠p
+()->
+u£r
+->
+ªtu∫Uæ
+);
+
+86 
+$this
+->
+	`ªndî
+('logö',
+	`¨øy
+('modñ'=>
+$modñ
+));
+
+87 
+	}
+}
+
+92 
+public
+ 
+fun˘i⁄
+ 
+	$a˘i⁄Logout
+()
+
+94 
+Yii
+::
+	`≠p
+()->
+u£r
+->
+	`logout
+();
+
+95 
+$this
+->
+	`ªdúe˘
+(
+Yii
+::
+	`≠p
+()->
+homeUæ
+);
+
+96 
+	}
+}
+
+	@data/dbgen.php
+
+1 <?
+php
+
+
+3 
+	g$dbFûe
+=
+dú«me
+(
+__FILE__
+).'/blog.db';
+
+4 
+	g$sqlFûe
+=
+dú«me
+(
+__FILE__
+).'/schema.sqlite.sql';
+
+6 @
+u∆ök
+(
+$dbFûe
+);
+
+7 
+	g$db
+=
+√w
+ 
+PDO
+('sqlôe:'.
+$dbFûe
+);
+
+8 
+	g$sqls
+=
+fûe_gë_c⁄ã¡s
+(
+$sqlFûe
+);
+
+9 
+f‹óch
+(
+ex∂ode
+(';',
+$sqls
+Ë
+as
+ 
+$sql
+)
+
+11 if(
+åim
+(
+$sql
+)!=='')
+
+12 
+$db
+->
+exec
+(
+$sql
+);
+
+	@models/Comment.php
+
+1 <?
+php
+
+
+3 ˛as†
+	cCommít
+ 
+exãnds
+ 
+	mCA˘iveRec‹d
+
+
+16 c⁄° 
+	mSTATUS_PENDING
+=1;
+
+17 c⁄° 
+	mSTATUS_APPROVED
+=2;
+
+23 
+public
+ 
+fun˘i⁄
+ 
+	$modñ
+(
+$˛assName
+=
+__CLASS__
+)
+
+25  
+∑ª¡
+::
+	`modñ
+(
+$˛assName
+);
+
+31 
+public
+ 
+fun˘i⁄
+ 
+	$èbÀName
+()
+
+34 
+	}
+}
+
+39 
+public
+ 
+fun˘i⁄
+ 
+	$ruÀs
+()
+
+43  
+	`¨øy
+(
+
+44 
+	`¨øy
+('content,áuthor,Émail', 'required'),
+
+45 
+	`¨øy
+('author,Émail, url', 'length', 'max'=>128),
+
+46 
+	`¨øy
+('email','email'),
+
+47 
+	`¨øy
+('url','url'),
+
+49 
+	}
+}
+
+54 
+public
+ 
+fun˘i⁄
+ 
+	$ªœti⁄s
+()
+
+58  
+	`¨øy
+(
+
+59 'po°' => 
+	`¨øy
+(
+£lf
+::
+BELONGS_TO
+, 'Post', 'post_id'),
+
+61 
+	}
+}
+
+66 
+public
+ 
+fun˘i⁄
+ 
+	$©åibuãLabñs
+()
+
+68  
+	`¨øy
+(
+
+78 
+	}
+}
+
+83 
+public
+ 
+fun˘i⁄
+ 
+	$≠¥ove
+()
+
+85 
+$this
+->
+°©us
+=
+Commít
+::
+STATUS_APPROVED
+;
+
+86 
+$this
+->
+	`upd©e
+(
+	`¨øy
+('status'));
+
+87 
+	}
+}
+
+94 
+public
+ 
+fun˘i⁄
+ 
+	$gëUæ
+(
+$po°
+=
+nuŒ
+)
+
+96 if(
+$po°
+===
+nuŒ
+)
+
+97 
+$po°
+=
+$this
+->
+po°
+;
+
+98  
+$po°
+->
+uæ
+.'#c'.
+$this
+->
+id
+;
+
+99 
+	}
+}
+
+104 
+public
+ 
+fun˘i⁄
+ 
+	$gëAuth‹Lök
+()
+
+106 if(!
+	`em±y
+(
+$this
+->
+uæ
+))
+
+107  
+CHtml
+::
+	`lök
+(CHtml::
+	`ícode
+(
+$this
+->
+auth‹
+),$this->
+uæ
+);
+
+109  
+CHtml
+::
+	`ícode
+(
+$this
+->
+auth‹
+);
+
+110 
+	}
+}
+
+115 
+public
+ 
+fun˘i⁄
+ 
+	$gëPídögCommítCou¡
+()
+
+117  
+$this
+->
+	`cou¡
+('°©us='.
+£lf
+::
+STATUS_PENDING
+);
+
+118 
+	}
+}
+
+124 
+public
+ 
+fun˘i⁄
+ 
+	$födRe˚¡Commíts
+(
+$limô
+=10)
+
+126  
+$this
+->
+	`wôh
+('po°')->
+	`födAŒ
+(
+	`¨øy
+(
+
+127 'c⁄dôi⁄'=>'t.°©us='.
+£lf
+::
+STATUS_APPROVED
+,
+
+129 'limô'=>
+$limô
+,
+
+131 
+	}
+}
+
+137 
+¥Ÿe˘ed
+ 
+fun˘i⁄
+ 
+	$bef‹eSave
+()
+
+139 if(
+∑ª¡
+::
+	`bef‹eSave
+())
+
+141 if(
+$this
+->
+isNewRec‹d
+)
+
+142 
+$this
+->
+¸óã_time
+=
+	`time
+();
+
+143  
+åue
+;
+
+146  
+Ál£
+;
+
+147 
+	}
+}
+
+	@models/ContactForm.php
+
+1 <?
+php
+
+
+8 ˛as†
+	cC⁄è˘F‹m
+ 
+exãnds
+ 
+	mCF‹mModñ
+
+
+10 
+public
+ 
+	m$«me
+;
+
+11 
+public
+ 
+	m$emaû
+;
+
+12 
+public
+ 
+	m$subje˘
+;
+
+13 
+public
+ 
+	m$body
+;
+
+14 
+public
+ 
+	m$vîifyCode
+;
+
+19 
+public
+ 
+fun˘i⁄
+ 
+	$ruÀs
+()
+
+21  
+	`¨øy
+(
+
+23 
+	`¨øy
+('name,Émail, subject, body', 'required'),
+
+25 
+	`¨øy
+('email', 'email'),
+
+27 
+	`¨øy
+('vîifyCode', 'ˇ±cha', 'ÆlowEm±y'=>!
+CC≠tcha
+::
+	`checkRequúemíts
+()),
+
+36 
+public
+ 
+fun˘i⁄
+ 
+	$©åibuãLabñs
+()
+
+38  
+	`¨øy
+(
+
+41 
+	}
+}
+
+	@models/LoginForm.php
+
+1 <?
+php
+
+
+8 ˛as†
+	cLogöF‹m
+ 
+exãnds
+ 
+	mCF‹mModñ
+
+
+10 
+public
+ 
+	m$u£∫ame
+;
+
+11 
+public
+ 
+	m$∑ssw‹d
+;
+
+12 
+public
+ 
+	m$ªmembîMe
+;
+
+14 
+¥iv©e
+ 
+	m$_idítôy
+;
+
+21 
+public
+ 
+fun˘i⁄
+ 
+	$ruÀs
+()
+
+23  
+	`¨øy
+(
+
+25 
+	`¨øy
+('username,Öassword', 'required'),
+
+27 
+	`¨øy
+('rememberMe', 'boolean'),
+
+29 
+	`¨øy
+('password', 'authenticate'),
+
+36 
+public
+ 
+fun˘i⁄
+ 
+	$©åibuãLabñs
+()
+
+38  
+	`¨øy
+(
+
+41 
+	}
+}
+
+47 
+public
+ 
+fun˘i⁄
+ 
+	$authítiˇã
+(
+$©åibuã
+,
+$∑øms
+)
+
+49 
+$this
+->
+_idítôy
+=
+√w
+ 
+	`U£rIdítôy
+($this->
+u£∫ame
+,$this->
+∑ssw‹d
+);
+
+50 if(!
+$this
+->
+_idítôy
+->
+	`authítiˇã
+())
+
+51 
+$this
+->
+	`addEº‹
+('password','Incorrect username orÖassword.');
+
+52 
+	}
+}
+
+58 
+public
+ 
+fun˘i⁄
+ 
+	$logö
+()
+
+60 if(
+$this
+->
+_idítôy
+===
+nuŒ
+)
+
+62 
+$this
+->
+_idítôy
+=
+√w
+ 
+	`U£rIdítôy
+($this->
+u£∫ame
+,$this->
+∑ssw‹d
+);
+
+63 
+$this
+->
+_idítôy
+->
+	`authítiˇã
+();
+
+65 if(
+$this
+->
+_idítôy
+->
+îr‹Code
+===
+U£rIdítôy
+::
+ERROR_NONE
+)
+
+67 
+$duøti⁄
+=
+$this
+->
+ªmembîMe
+ ? 3600*24*30 : 0;
+
+68 
+Yii
+::
+	`≠p
+()->
+u£r
+->
+	`logö
+(
+$this
+->
+_idítôy
+,
+$duøti⁄
+);
+
+69  
+åue
+;
+
+72  
+Ál£
+;
+
+73 
+	}
+}
+
+	@models/Lookup.php
+
+1 <?
+php
+
+
+3 ˛as†
+	cLookup
+ 
+exãnds
+ 
+	mCA˘iveRec‹d
+
+
+16 
+¥iv©e
+ 
+	m$_ôems
+=
+¨øy
+();
+
+22 
+public
+ 
+fun˘i⁄
+ 
+	$modñ
+(
+$˛assName
+=
+__CLASS__
+)
+
+24  
+∑ª¡
+::
+	`modñ
+(
+$˛assName
+);
+
+30 
+public
+ 
+fun˘i⁄
+ 
+	$èbÀName
+()
+
+33 
+	}
+}
+
+41 
+public
+ 
+fun˘i⁄
+ 
+	$ôems
+(
+$ty≥
+)
+
+43 if(!
+	`is£t
+(
+£lf
+::
+$_ôems
+[
+$ty≥
+]))
+
+44 
+£lf
+::
+	`lﬂdIãms
+(
+$ty≥
+);
+
+45  
+£lf
+::
+$_ôems
+[
+$ty≥
+];
+
+46 
+	}
+}
+
+54 
+public
+ 
+fun˘i⁄
+ 
+	$ôem
+(
+$ty≥
+,
+$code
+)
+
+56 if(!
+	`is£t
+(
+£lf
+::
+$_ôems
+[
+$ty≥
+]))
+
+57 
+£lf
+::
+	`lﬂdIãms
+(
+$ty≥
+);
+
+58  
+	`is£t
+(
+£lf
+::
+$_ôems
+[
+$ty≥
+][
+$code
+]Ë? sñf::$_ôems[$ty≥][$code] : 
+Ál£
+;
+
+59 
+	}
+}
+
+65 
+¥iv©e
+ 
+fun˘i⁄
+ 
+	$lﬂdIãms
+(
+$ty≥
+)
+
+67 
+£lf
+::
+$_ôems
+[
+$ty≥
+]=
+	`¨øy
+();
+
+68 
+$modñs
+=
+£lf
+::
+	`modñ
+()->
+	`födAŒ
+(
+	`¨øy
+(
+
+70 '∑øms'=>
+	`¨øy
+(':ty≥'=>
+$ty≥
+),
+
+73 
+	`f‹óch
+(
+$modñs
+ 
+as
+ 
+$modñ
+)
+
+74 
+£lf
+::
+$_ôems
+[
+$ty≥
+][
+$modñ
+->
+code
+]=$modñ->
+«me
+;
+
+75 
+	}
+}
+
+	@models/Post.php
+
+1 <?
+php
+
+
+3 ˛as†
+	cPo°
+ 
+exãnds
+ 
+	mCA˘iveRec‹d
+
+
+16 c⁄° 
+	mSTATUS_DRAFT
+=1;
+
+17 c⁄° 
+	mSTATUS_PUBLISHED
+=2;
+
+18 c⁄° 
+	mSTATUS_ARCHIVED
+=3;
+
+20 
+¥iv©e
+ 
+	m$_ﬁdTags
+;
+
+26 
+public
+ 
+fun˘i⁄
+ 
+	$modñ
+(
+$˛assName
+=
+__CLASS__
+)
+
+28  
+∑ª¡
+::
+	`modñ
+(
+$˛assName
+);
+
+34 
+public
+ 
+fun˘i⁄
+ 
+	$èbÀName
+()
+
+37 
+	}
+}
+
+42 
+public
+ 
+fun˘i⁄
+ 
+	$ruÀs
+()
+
+46  
+	`¨øy
+(
+
+47 
+	`¨øy
+('title, content, status', 'required'),
+
+48 
+	`¨øy
+('status', 'in', 'range'=>array(1,2,3)),
+
+49 
+	`¨øy
+('title', 'length', 'max'=>128),
+
+50 
+	`¨øy
+('tags', 'match', 'pattern'=>'/^[\w\s,]+$/', 'message'=>'Tags can only contain word characters.'),
+
+51 
+	`¨øy
+('tags', 'normalizeTags'),
+
+53 
+	`¨øy
+('title, status', 'safe', 'on'=>'search'),
+
+55 
+	}
+}
+
+60 
+public
+ 
+fun˘i⁄
+ 
+	$ªœti⁄s
+()
+
+64  
+	`¨øy
+(
+
+65 'auth‹' => 
+	`¨øy
+(
+£lf
+::
+BELONGS_TO
+, 'User', 'author_id'),
+
+66 'commíts' => 
+	`¨øy
+(
+£lf
+::
+HAS_MANY
+, 'Commít', 'po°_id', 'c⁄dôi⁄'=>'commíts.°©us='.
+Commít
+::
+STATUS_APPROVED
+, 'order'=>'comments.create_time DESC'),
+
+67 'commítCou¡' => 
+	`¨øy
+(
+£lf
+::
+STAT
+, 'Commít', 'po°_id', 'c⁄dôi⁄'=>'°©us='.
+Commít
+::
+STATUS_APPROVED
+),
+
+69 
+	}
+}
+
+74 
+public
+ 
+fun˘i⁄
+ 
+	$©åibuãLabñs
+()
+
+76  
+	`¨øy
+(
+
+86 
+	}
+}
+
+91 
+public
+ 
+fun˘i⁄
+ 
+	$gëUæ
+()
+
+93  
+Yii
+::
+	`≠p
+()->
+	`¸óãUæ
+('po°/võw', 
+	`¨øy
+(
+
+94 'id'=>
+$this
+->
+id
+,
+
+95 'tôÀ'=>
+$this
+->
+tôÀ
+,
+
+97 
+	}
+}
+
+102 
+public
+ 
+fun˘i⁄
+ 
+	$gëTagLöks
+()
+
+104 
+$löks
+=
+	`¨øy
+();
+
+105 
+	`f‹óch
+(
+Tag
+::
+	`°rög2¨øy
+(
+$this
+->
+ègs
+Ë
+as
+ 
+$èg
+)
+
+106 
+$löks
+[]=
+CHtml
+::
+	`lök
+(CHtml::
+	`ícode
+(
+$èg
+), 
+	`¨øy
+('post/index', 'tag'=>$tag));
+
+107  
+$löks
+;
+
+108 
+	}
+}
+
+113 
+public
+ 
+fun˘i⁄
+ 
+	$n‹mÆizeTags
+(
+$©åibuã
+,
+$∑øms
+)
+
+115 
+$this
+->
+ègs
+=
+Tag
+::
+	`¨øy2°rög
+(
+	`¨øy_unique
+(Tag::
+	`°rög2¨øy
+($this->tags)));
+
+116 
+	}
+}
+
+124 
+public
+ 
+fun˘i⁄
+ 
+	$addCommít
+(
+$commít
+)
+
+126 if(
+Yii
+::
+	`≠p
+()->
+∑øms
+['commentNeedApproval'])
+
+127 
+$commít
+->
+°©us
+=
+Commít
+::
+STATUS_PENDING
+;
+
+129 
+$commít
+->
+°©us
+=
+Commít
+::
+STATUS_APPROVED
+;
+
+130 
+$commít
+->
+po°_id
+=
+$this
+->
+id
+;
+
+131  
+$commít
+->
+	`ßve
+();
+
+132 
+	}
+}
+
+137 
+¥Ÿe˘ed
+ 
+fun˘i⁄
+ 
+	$a·îFöd
+()
+
+139 
+∑ª¡
+::
+	`a·îFöd
+();
+
+140 
+$this
+->
+_ﬁdTags
+=$this->
+ègs
+;
+
+141 
+	}
+}
+
+147 
+¥Ÿe˘ed
+ 
+fun˘i⁄
+ 
+	$bef‹eSave
+()
+
+149 if(
+∑ª¡
+::
+	`bef‹eSave
+())
+
+151 if(
+$this
+->
+isNewRec‹d
+)
+
+153 
+$this
+->
+¸óã_time
+=$this->
+upd©e_time
+=
+	`time
+();
+
+154 
+$this
+->
+auth‹_id
+=
+Yii
+::
+	`≠p
+()->
+u£r
+->
+id
+;
+
+157 
+$this
+->
+upd©e_time
+=
+	`time
+();
+
+158  
+åue
+;
+
+161  
+Ál£
+;
+
+162 
+	}
+}
+
+167 
+¥Ÿe˘ed
+ 
+fun˘i⁄
+ 
+	$a·îSave
+()
+
+169 
+∑ª¡
+::
+	`a·îSave
+();
+
+170 
+Tag
+::
+	`modñ
+()->
+	`upd©eFªquícy
+(
+$this
+->
+_ﬁdTags
+, $this->
+ègs
+);
+
+171 
+	}
+}
+
+176 
+¥Ÿe˘ed
+ 
+fun˘i⁄
+ 
+	$a·îDñëe
+()
+
+178 
+∑ª¡
+::
+	`a·îDñëe
+();
+
+179 
+Commít
+::
+	`modñ
+()->
+	`dñëeAŒ
+('po°_id='.
+$this
+->
+id
+);
+
+180 
+Tag
+::
+	`modñ
+()->
+	`upd©eFªquícy
+(
+$this
+->
+ègs
+, '');
+
+181 
+	}
+}
+
+187 
+public
+ 
+fun˘i⁄
+ 
+	$£¨ch
+()
+
+189 
+$¸ôîü
+=
+√w
+ 
+CDbCrôîü
+;
+
+191 
+$¸ôîü
+->
+	`com∑ª
+('tôÀ',
+$this
+->
+tôÀ
+,
+åue
+);
+
+193 
+$¸ôîü
+->
+	`com∑ª
+('°©us',
+$this
+->
+°©us
+);
+
+195  
+√w
+ 
+	`CA˘iveD©aProvidî
+('Po°', 
+	`¨øy
+(
+
+196 '¸ôîü'=>
+$¸ôîü
+,
+
+197 's‹t'=>
+	`¨øy
+(
+
+201 
+	}
+}
+
+	@models/Tag.php
+
+1 <?
+php
+
+
+3 ˛as†
+	cTag
+ 
+exãnds
+ 
+	mCA˘iveRec‹d
+
+
+16 
+public
+ 
+fun˘i⁄
+ 
+	$modñ
+(
+$˛assName
+=
+__CLASS__
+)
+
+18  
+∑ª¡
+::
+	`modñ
+(
+$˛assName
+);
+
+24 
+public
+ 
+fun˘i⁄
+ 
+	$èbÀName
+()
+
+27 
+	}
+}
+
+32 
+public
+ 
+fun˘i⁄
+ 
+	$ruÀs
+()
+
+36  
+	`¨øy
+(
+
+37 
+	`¨øy
+('name', 'required'),
+
+38 
+	`¨øy
+('‰equícy', 'numîiˇl', 'öãgîO∆y'=>
+åue
+),
+
+39 
+	`¨øy
+('name', 'length', 'max'=>128),
+
+41 
+	}
+}
+
+46 
+public
+ 
+fun˘i⁄
+ 
+	$ªœti⁄s
+()
+
+50  
+	`¨øy
+(
+
+52 
+	}
+}
+
+57 
+public
+ 
+fun˘i⁄
+ 
+	$©åibuãLabñs
+()
+
+59  
+	`¨øy
+(
+
+64 
+	}
+}
+
+72 
+public
+ 
+fun˘i⁄
+ 
+	$födTagWeights
+(
+$limô
+=20)
+
+74 
+$modñs
+=
+$this
+->
+	`födAŒ
+(
+	`¨øy
+(
+
+76 'limô'=>
+$limô
+,
+
+79 
+$tŸÆ
+=0;
+
+80 
+	`f‹óch
+(
+$modñs
+ 
+as
+ 
+$modñ
+)
+
+81 
+$tŸÆ
++=
+$modñ
+->
+‰equícy
+;
+
+83 
+$ègs
+=
+	`¨øy
+();
+
+84 if(
+$tŸÆ
+>0)
+
+86 
+	`f‹óch
+(
+$modñs
+ 
+as
+ 
+$modñ
+)
+
+87 
+$ègs
+[
+$modñ
+->
+«me
+]=8+()(16*$modñ->
+‰equícy
+/(
+$tŸÆ
++10));
+
+88 
+	`ks‹t
+(
+$ègs
+);
+
+90  
+$ègs
+;
+
+91 
+	}
+}
+
+99 
+public
+ 
+fun˘i⁄
+ 
+	$sugge°Tags
+(
+$keyw‹d
+,
+$limô
+=20)
+
+101 
+$ègs
+=
+$this
+->
+	`födAŒ
+(
+	`¨øy
+(
+
+104 'limô'=>
+$limô
+,
+
+105 '∑øms'=>
+	`¨øy
+(
+
+106 ':keyw‹d'=>'%'.
+	`°πr
+(
+$keyw‹d
+,
+	`¨øy
+('%'=>'\%', '_'=>'\_', '\\'=>'\\\\')).'%',
+
+109 
+$«mes
+=
+	`¨øy
+();
+
+110 
+	`f‹óch
+(
+$ègs
+ 
+as
+ 
+$èg
+)
+
+111 
+$«mes
+[]=
+$èg
+->
+«me
+;
+
+112  
+$«mes
+;
+
+113 
+	}
+}
+
+115 
+public
+ 
+fun˘i⁄
+ 
+	$°rög2¨øy
+(
+$ègs
+)
+
+117  
+	`¥eg_•lô
+('/\s*,\s*/',
+	`åim
+(
+$ègs
+),-1,
+PREG_SPLIT_NO_EMPTY
+);
+
+118 
+	}
+}
+
+120 
+public
+ 
+fun˘i⁄
+ 
+	$¨øy2°rög
+(
+$ègs
+)
+
+122  
+	`im∂ode
+(', ',
+$ègs
+);
+
+123 
+	}
+}
+
+125 
+public
+ 
+fun˘i⁄
+ 
+	$upd©eFªquícy
+(
+$ﬁdTags
+, 
+$√wTags
+)
+
+127 
+$ﬁdTags
+=
+£lf
+::
+	`°rög2¨øy
+($oldTags);
+
+128 
+$√wTags
+=
+£lf
+::
+	`°rög2¨øy
+($newTags);
+
+129 
+$this
+->
+	`addTags
+(
+	`¨øy_vÆues
+(
+	`¨øy_diff
+(
+$√wTags
+,
+$ﬁdTags
+)));
+
+130 
+$this
+->
+	`ªmoveTags
+(
+	`¨øy_vÆues
+(
+	`¨øy_diff
+(
+$ﬁdTags
+,
+$√wTags
+)));
+
+131 
+	}
+}
+
+133 
+public
+ 
+fun˘i⁄
+ 
+	$addTags
+(
+$ègs
+)
+
+135 
+$¸ôîü
+=
+√w
+ 
+CDbCrôîü
+;
+
+136 
+$¸ôîü
+->
+	`addInC⁄dôi⁄
+('«me',
+$ègs
+);
+
+137 
+$this
+->
+	`upd©eCou¡îs
+(
+	`¨øy
+('‰equícy'=>1),
+$¸ôîü
+);
+
+138 
+	`f‹óch
+(
+$ègs
+ 
+as
+ 
+$«me
+)
+
+140 if(!
+$this
+->
+	`exi°s
+('«me=:«me',
+	`¨øy
+(':«me'=>
+$«me
+)))
+
+142 
+$èg
+=
+√w
+ 
+Tag
+;
+
+143 
+$èg
+->
+«me
+=
+$«me
+;
+
+144 
+$èg
+->
+‰equícy
+=1;
+
+145 
+$èg
+->
+	`ßve
+();
+
+148 
+	}
+}
+
+150 
+public
+ 
+fun˘i⁄
+ 
+	$ªmoveTags
+(
+$ègs
+)
+
+152 if(
+	`em±y
+(
+$ègs
+))
+
+154 
+$¸ôîü
+=
+√w
+ 
+CDbCrôîü
+;
+
+155 
+$¸ôîü
+->
+	`addInC⁄dôi⁄
+('«me',
+$ègs
+);
+
+156 
+$this
+->
+	`upd©eCou¡îs
+(
+	`¨øy
+('‰equícy'=>-1),
+$¸ôîü
+);
+
+157 
+$this
+->
+	`dñëeAŒ
+('frequency<=0');
+
+158 
+	}
+}
+
+	@models/User.php
+
+1 <?
+php
+
+
+3 ˛as†
+	cU£r
+ 
+exãnds
+ 
+	mCA˘iveRec‹d
+
+
+18 
+public
+ 
+fun˘i⁄
+ 
+	$modñ
+(
+$˛assName
+=
+__CLASS__
+)
+
+20  
+∑ª¡
+::
+	`modñ
+(
+$˛assName
+);
+
+26 
+public
+ 
+fun˘i⁄
+ 
+	$èbÀName
+()
+
+29 
+	}
+}
+
+34 
+public
+ 
+fun˘i⁄
+ 
+	$ruÀs
+()
+
+38  
+	`¨øy
+(
+
+39 
+	`¨øy
+('username,Öassword,Émail', 'required'),
+
+40 
+	`¨øy
+('username,Öassword,Émail', 'length', 'max'=>128),
+
+41 
+	`¨øy
+('profile', 'safe'),
+
+43 
+	}
+}
+
+48 
+public
+ 
+fun˘i⁄
+ 
+	$ªœti⁄s
+()
+
+52  
+	`¨øy
+(
+
+53 'po°s' => 
+	`¨øy
+(
+£lf
+::
+HAS_MANY
+, 'Post', 'author_id'),
+
+55 
+	}
+}
+
+60 
+public
+ 
+fun˘i⁄
+ 
+	$©åibuãLabñs
+()
+
+62  
+	`¨øy
+(
+
+69 
+	}
+}
+
+76 
+public
+ 
+fun˘i⁄
+ 
+	$vÆid©ePassw‹d
+(
+$∑ssw‹d
+)
+
+78  
+CPassw‹dHñ≥r
+::
+	`vîifyPassw‹d
+(
+$∑ssw‹d
+,
+$this
+->
+∑ssw‹d
+);
+
+79 
+	}
+}
+
+86 
+public
+ 
+fun˘i⁄
+ 
+	$hashPassw‹d
+(
+$∑ssw‹d
+)
+
+88  
+CPassw‹dHñ≥r
+::
+	`hashPassw‹d
+(
+$∑ssw‹d
+);
+
+89 
+	}
+}
+
+	@tests/WebTestCase.php
+
+1 <?
+php
+
+
+7 
+deföe
+('TEST_BASE_URL','http://localhost/yii/demos/blog/index-test.php/');
+
+14 ˛as†
+	cWebTe°Ca£
+ 
+exãnds
+ 
+	mCWebTe°Ca£
+
+
+20 
+¥Ÿe˘ed
+ 
+fun˘i⁄
+ 
+	$£tUp
+()
+
+22 
+∑ª¡
+::
+	`£tUp
+();
+
+23 
+$this
+->
+	`£tBrow£rUæ
+(
+TEST_BASE_URL
+);
+
+25 
+	}
+}
+
+	@tests/bootstrap.php
+
+1 <?
+php
+
+
+4 
+	g$yiô
+=
+dú«me
+(
+__FILE__
+).'/../../../../framework/yiit.php';
+
+5 
+	g$c⁄fig
+=
+dú«me
+(
+__FILE__
+).'/../config/test.php';
+
+7 
+ªquúe_⁄˚
+(
+$yiô
+);
+
+8 
+ªquúe_⁄˚
+(
+dú«me
+(
+__FILE__
+).'/WebTestCase.php');
+
+10 
+	gYii
+::
+¸óãWebAµliˇti⁄
+(
+$c⁄fig
+);
+
+	@tests/fixtures/tbl_comment.php
+
+1 <?
+php
+
+
+3  
+¨øy
+(
+
+	@tests/fixtures/tbl_lookup.php
+
+1 <?
+php
+
+
+3  
+¨øy
+(
+
+	@tests/fixtures/tbl_post.php
+
+1 <?
+php
+
+
+3  
+¨øy
+(
+
+4 'ßm∂e1'=>
+¨øy
+(
+
+	@tests/fixtures/tbl_tag.php
+
+1 <?
+php
+
+
+3  
+¨øy
+(
+
+4 
+¨øy
+(
+
+8 
+¨øy
+(
+
+	@tests/fixtures/tbl_user.php
+
+1 <?
+php
+
+
+3  
+¨øy
+(
+
+4 
+¨øy
+(
+
+	@tests/functional/CommentTest.php
+
+1 <?
+php
+
+
+3 ˛as†
+	cCommítTe°
+ 
+exãnds
+ 
+	mWebTe°Ca£
+
+
+9 
+public
+ 
+	m$fixtuªs
+=
+¨øy
+(
+
+14 
+public
+ 
+fun˘i⁄
+ 
+	$ã°Cª©e
+()
+
+16 
+$this
+->
+	`›í
+('post/1/xyz');
+
+19 
+$this
+->
+	`as£πTextPª£¡
+($this->
+po°s
+['sample1']['title']);
+
+20 
+$this
+->
+	`as£πEÀmítPª£¡
+("name=Comment[author]");
+
+23 
+$this
+->
+	`˛ickAndWaô
+("//input[@value='Submit']");
+
+24 
+$this
+->
+	`as£πTextPª£¡
+('Name cannot be blank.');
+
+25 
+$this
+->
+	`as£πTextPª£¡
+('Email cannot be blank.');
+
+26 
+$this
+->
+	`as£πTextPª£¡
+('Comment cannot be blank.');
+
+29 
+$commít
+="comment 1";
+
+30 
+$this
+->
+	`ty≥
+('name=Comment[author]','me');
+
+31 
+$this
+->
+	`ty≥
+('name=Comment[email]','me@example.com');
+
+32 
+$this
+->
+	`ty≥
+('«me=Commít[c⁄ã¡]',
+$commít
+);
+
+33 
+$this
+->
+	`˛ickAndWaô
+("//input[@value='Submit']");
+
+34 
+$this
+->
+	`as£πTextPª£¡
+('Thank you for your comment');
+
+36 
+	}
+}
+
+	@tests/functional/PostTest.php
+
+1 <?
+php
+
+
+3 ˛as†
+	cPo°Te°
+ 
+exãnds
+ 
+	mWebTe°Ca£
+
+
+9 
+public
+ 
+	m$fixtuªs
+=
+¨øy
+(
+
+13 
+public
+ 
+fun˘i⁄
+ 
+	$ã°Index
+()
+
+15 
+$this
+->
+	`›í
+('');
+
+17 
+$this
+->
+	`as£πTextPª£¡
+('Yii Blog Demo');
+
+19 
+$this
+->
+	`as£πTextPª£¡
+($this->
+po°s
+['sample1']['title']);
+
+22 
+public
+ 
+fun˘i⁄
+ 
+	$ã°Võw
+()
+
+24 
+$this
+->
+	`›í
+('post/1/xyz');
+
+26 
+$this
+->
+	`as£πTextPª£¡
+($this->
+po°s
+['sample1']['title']);
+
+28 
+$this
+->
+	`as£πTextPª£¡
+('Leaveá Comment');
+
+29 
+	}
+}
+
+	@tests/functional/SiteTest.php
+
+1 <?
+php
+
+
+3 ˛as†
+	cSôeTe°
+ 
+exãnds
+ 
+	mWebTe°Ca£
+
+
+5 
+public
+ 
+fun˘i⁄
+ 
+	$ã°C⁄è˘
+()
+
+7 
+$this
+->
+	`›í
+('site/contact');
+
+8 
+$this
+->
+	`as£πTextPª£¡
+('Contact Us');
+
+9 
+$this
+->
+	`as£πEÀmítPª£¡
+('name=ContactForm[name]');
+
+11 
+$this
+->
+	`ty≥
+('name=ContactForm[name]','tester');
+
+12 
+$this
+->
+	`ty≥
+('name=ContactForm[email]','tester@example.com');
+
+13 
+$this
+->
+	`ty≥
+('name=ContactForm[subject]','test subject');
+
+14 
+$this
+->
+	`˛ickAndWaô
+("//input[@value='Submit']");
+
+15 
+$this
+->
+	`as£πTextPª£¡
+('Body cannot be blank.');
+
+18 
+public
+ 
+fun˘i⁄
+ 
+	$ã°LogöLogout
+()
+
+20 
+$this
+->
+	`›í
+('');
+
+22 if(
+$this
+->
+	`isTextPª£¡
+('Logout'))
+
+23 
+$this
+->
+	`˛ickAndWaô
+('link=Logout');
+
+26 
+$this
+->
+	`˛ickAndWaô
+('link=Login');
+
+27 
+$this
+->
+	`as£πEÀmítPª£¡
+('name=LoginForm[username]');
+
+28 
+$this
+->
+	`ty≥
+('name=LoginForm[username]','demo');
+
+29 
+$this
+->
+	`˛ickAndWaô
+("//input[@value='Login']");
+
+30 
+$this
+->
+	`as£πTextPª£¡
+('Password cannot be blank.');
+
+31 
+$this
+->
+	`ty≥
+('name=LoginForm[password]','demo');
+
+32 
+$this
+->
+	`˛ickAndWaô
+("//input[@value='Login']");
+
+33 
+$this
+->
+	`as£πTextNŸPª£¡
+('Password cannot be blank.');
+
+34 
+$this
+->
+	`as£πTextPª£¡
+('Logout');
+
+37 
+$this
+->
+	`as£πTextNŸPª£¡
+('Login');
+
+38 
+$this
+->
+	`˛ickAndWaô
+('link=Logout');
+
+39 
+$this
+->
+	`as£πTextPª£¡
+('Login');
+
+40 
+	}
+}
+
+	@tests/unit/CommentTest.php
+
+1 <?
+php
+
+
+3 ˛as†
+	cCommítTe°
+ 
+exãnds
+ 
+	mCDbTe°Ca£
+
+
+9 
+public
+ 
+	m$fixtuªs
+=
+¨øy
+(
+
+14 
+public
+ 
+fun˘i⁄
+ 
+	$ã°FödRe˚¡Commíts
+()
+
+16 
+$this
+->
+	`as£πEquÆs
+(
+	`¨øy
+(), 
+Commít
+::
+	`modñ
+()->
+	`födRe˚¡Commíts
+());
+
+18 
+$commít
+=
+√w
+ 
+Commít
+;
+
+19 
+$commít
+->
+	`£tAâribuãs
+(
+	`¨øy
+(
+
+21 '°©us'=>
+Commít
+::
+STATUS_APPROVED
+,
+
+22 '¸óã_time'=>
+	`time
+(),
+
+25 'po°_id'=>
+$this
+->
+po°s
+['sample1']['id'],
+
+26 ),
+Ál£
+);
+
+27 
+$this
+->
+	`as£πTrue
+(
+$commít
+->
+	`ßve
+(
+Ál£
+));
+
+28 
+$this
+->
+	`as£πEquÆs
+(1,
+$commít
+->
+id
+);
+
+30 
+$commíts
+=
+Commít
+::
+	`modñ
+()->
+	`födRe˚¡Commíts
+();
+
+31 
+$this
+->
+	`as£πEquÆs
+(1,
+	`cou¡
+(
+$commíts
+));
+
+32 
+$this
+->
+	`as£πEquÆs
+(
+$commít
+->
+©åibuãs
+, 
+$commíts
+[0]->attributes);
+
+35 
+public
+ 
+fun˘i⁄
+ 
+	$ã°Aµrove
+()
+
+37 
+$commít
+=
+√w
+ 
+Commít
+;
+
+38 
+$commít
+->
+	`£tAâribuãs
+(
+	`¨øy
+(
+
+40 '°©us'=>
+Commít
+::
+STATUS_PENDING
+,
+
+41 '¸óã_time'=>
+	`time
+(),
+
+44 'po°_id'=>
+$this
+->
+po°s
+['sample1']['id'],
+
+45 ),
+Ál£
+);
+
+46 
+$this
+->
+	`as£πTrue
+(
+$commít
+->
+	`ßve
+(
+Ál£
+));
+
+48 
+$commít
+=
+Commít
+::
+	`modñ
+()->
+	`födByPk
+($commít->
+id
+);
+
+49 
+$this
+->
+	`as£πTrue
+(
+$commít
+ 
+ö°™˚of
+ 
+Commít
+);
+
+50 
+$this
+->
+	`as£πEquÆs
+(
+Commít
+::
+STATUS_PENDING
+,
+$commít
+->
+°©us
+);
+
+52 
+$commít
+->
+	`≠¥ove
+();
+
+53 
+$this
+->
+	`as£πEquÆs
+(
+Commít
+::
+STATUS_APPROVED
+,
+$commít
+->
+°©us
+);
+
+54 
+$commít
+=
+Commít
+::
+	`modñ
+()->
+	`födByPk
+($commít->
+id
+);
+
+55 
+$this
+->
+	`as£πEquÆs
+(
+Commít
+::
+STATUS_APPROVED
+,
+$commít
+->
+°©us
+);
+
+56 
+	}
+}
+
+	@tests/unit/LookupTest.php
+
+1 <?
+php
+
+
+3 ˛as†
+	cLookupTe°
+ 
+exãnds
+ 
+	mCDbTe°Ca£
+
+
+5 
+public
+ 
+	m$fixtuªs
+=
+¨øy
+(
+
+9 
+public
+ 
+fun˘i⁄
+ 
+	$ã°Cª©e
+()
+
+13 
+	}
+}
+
+	@tests/unit/PostTest.php
+
+1 <?
+php
+
+
+3 ˛as†
+	cPo°Te°
+ 
+exãnds
+ 
+	mCDbTe°Ca£
+
+
+9 
+public
+ 
+	m$fixtuªs
+=
+¨øy
+(
+
+14 
+public
+ 
+fun˘i⁄
+ 
+	$ã°Save
+()
+
+18 
+	}
+}
+
+	@tests/unit/TagTest.php
+
+1 <?
+php
+
+
+3 ˛as†
+	cTagTe°
+ 
+exãnds
+ 
+	mCDbTe°Ca£
+
+
+5 
+public
+ 
+	m$fixtuªs
+=
+¨øy
+(
+
+9 
+public
+ 
+fun˘i⁄
+ 
+	$ã°Cª©e
+()
+
+13 
+	}
+}
+
+	@tests/unit/UserTest.php
+
+1 <?
+php
+
+
+3 ˛as†
+	cU£rTe°
+ 
+exãnds
+ 
+	mCDbTe°Ca£
+
+
+5 
+public
+ 
+	m$fixtuªs
+=
+¨øy
+(
+
+9 
+public
+ 
+fun˘i⁄
+ 
+	$ã°VÆid©ePassw‹d
+()
+
+11 
+$this
+->
+	`as£πTrue
+($this->
+	`u£rs
+(0)->
+	`vÆid©ePassw‹d
+('demo'));
+
+12 
+$this
+->
+	`as£πFÆ£
+($this->
+	`u£rs
+(0)->
+	`vÆid©ePassw‹d
+('wrong'));
+
+16 
+public
+ 
+fun˘i⁄
+ 
+	$ã°Ch™gePassw‹d
+()
+
+18 
+$u£r
+=
+$this
+->
+	`u£rs
+(0);
+
+19 
+$u£r
+->
+∑ssw‹d
+=$u£r->
+	`hashPassw‹d
+('newpwd');
+
+20 
+$this
+->
+	`as£πFÆ£
+(
+$u£r
+->
+	`vÆid©ePassw‹d
+('demo'));
+
+21 
+$this
+->
+	`as£πTrue
+(
+$u£r
+->
+	`vÆid©ePassw‹d
+('newpwd'));
+
+23 
+	}
+}
+
+	@views/comment/_form.php
+
+1 <
+div
+ 
+	g˛ass
+="form">
+
+3 <?
+php
+ 
+$f‹m
+=
+$this
+->
+begöWidgë
+('CA˘iveF‹m', 
+¨øy
+(
+
+5 'íabÀAjaxVÆid©i⁄'=>
+åue
+,
+
+8 <
+p
+ 
+	g˛ass
+="nŸe">
+Fõlds
+ 
+wôh
+ <
+•™
+ 
+˛ass
+="ªquúed">*</•™> 
+¨e
+ 
+ªquúed
+.</p>
+
+10 <
+div
+ 
+˛ass
+="row">
+
+11 <?
+php
+ 
+echo
+ 
+$f‹m
+->
+œbñEx
+(
+$modñ
+,'author'); ?>
+
+12 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+ãxtFõld
+(
+$modñ
+,'auth‹',
+¨øy
+('size'=>60,'maxlength'=>128)); ?>
+
+13 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+îr‹
+(
+$modñ
+,'author'); ?>
+
+14 </
+	gdiv
+>
+
+16 <
+div
+ 
+	g˛ass
+="row">
+
+17 <?
+php
+ 
+echo
+ 
+$f‹m
+->
+œbñEx
+(
+$modñ
+,'email'); ?>
+
+18 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+ãxtFõld
+(
+$modñ
+,'emaû',
+¨øy
+('size'=>60,'maxlength'=>128)); ?>
+
+19 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+îr‹
+(
+$modñ
+,'email'); ?>
+
+20 </
+	gdiv
+>
+
+22 <
+div
+ 
+	g˛ass
+="row">
+
+23 <?
+php
+ 
+echo
+ 
+$f‹m
+->
+œbñEx
+(
+$modñ
+,'url'); ?>
+
+24 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+ãxtFõld
+(
+$modñ
+,'uæ',
+¨øy
+('size'=>60,'maxlength'=>128)); ?>
+
+25 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+îr‹
+(
+$modñ
+,'url'); ?>
+
+26 </
+	gdiv
+>
+
+28 <
+div
+ 
+	g˛ass
+="row">
+
+29 <?
+php
+ 
+echo
+ 
+$f‹m
+->
+œbñEx
+(
+$modñ
+,'content'); ?>
+
+30 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+ãxtAªa
+(
+$modñ
+,'c⁄ã¡',
+¨øy
+('rows'=>6, 'cols'=>50)); ?>
+
+31 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+îr‹
+(
+$modñ
+,'content'); ?>
+
+32 </
+	gdiv
+>
+
+34 <
+div
+ 
+	g˛ass
+="row buttons">
+
+35 <?
+php
+ 
+echo
+ 
+CHtml
+::
+submôBuâ⁄
+(
+$modñ
+->
+isNewRec‹d
+ ? 'Submit' : 'Save'); ?>
+
+36 </
+	gdiv
+>
+
+38 <?
+php
+ 
+	g$this
+->
+ídWidgë
+(); ?>
+
+40 </
+	gdiv
+><!-- 
+	gf‹m
+ -->
+
+	@views/comment/_view.php
+
+1 <?
+php
+
+
+2 
+	g$dñëeJS
+ = <<<
+DEL
+
+
+3 
+$
+('.c⁄èöî').
+⁄
+('˛ick','.timêa.dñëe',
+	$fun˘i⁄
+() {
+
+4 
+v¨
+ 
+th
+=
+	`$
+(
+this
+),
+
+5 
+c⁄èöî
+=
+th
+.
+	`˛o£°
+('div.comment'),
+
+6 
+id
+=
+c⁄èöî
+.
+	`©å
+('id').
+	`¶i˚
+(1);
+
+7 if(
+	`c⁄fúm
+('Aª you suª you w™àtÿdñëêcommíà#'+
+id
++'?')) {
+
+8 
+$
+.
+	`ajax
+({
+
+9 
+uæ
+:
+th
+.
+	`©å
+('href'),
+
+10 
+ty≥
+:'POST'
+
+11 }).
+	`d⁄e
+(
+	`fun˘i⁄
+(){
+c⁄èöî
+.
+	`¶ideUp
+()});
+
+13  
+Ál£
+;
+
+14 
+	}
+});
+
+15 
+	gDEL
+;
+
+16 
+	gYii
+::
+≠p
+()->
+gëClõ¡S¸ùt
+()->
+ªgi°îS¸ùt
+('dñëe', 
+$dñëeJS
+);
+
+18 <
+div
+ 
+	g˛ass
+="commít" 
+id
+="c<?phpÉcho $data->id; ?>">
+
+20 <?
+php
+ 
+echo
+ 
+CHtml
+::
+lök
+("#{$d©a->id}", 
+$d©a
+->
+uæ
+, 
+¨øy
+(
+
+25 <
+div
+ 
+	g˛ass
+="author">
+
+26 <?
+php
+ 
+echo
+ 
+$d©a
+->
+auth‹Lök
+; ?> 
+ßys
+ 
+	g⁄
+
+
+27 <?
+php
+ 
+echo
+ 
+	gCHtml
+::
+lök
+(
+CHtml
+::
+ícode
+(
+$d©a
+->
+po°
+->
+tôÀ
+), $d©a->po°->
+uæ
+); ?>
+
+28 </
+	gdiv
+>
+
+30 <
+div
+ 
+	g˛ass
+="time">
+
+31 <?
+php
+ if(
+$d©a
+->
+°©us
+==
+Commít
+::
+STATUS_PENDING
+): ?>
+
+32 <
+•™
+ 
+˛ass
+="≥ndög">
+Pídög
+ 
+≠¥ovÆ
+</span> |
+
+33 <?
+php
+ 
+echo
+ 
+CHtml
+::
+lökBuâ⁄
+('Aµrove', 
+¨øy
+(
+
+34 'submô'=>
+¨øy
+('commít/≠¥ove','id'=>
+$d©a
+->
+id
+),
+
+36 <?
+php
+ 
+	gídif
+; ?>
+
+37 <?
+php
+ 
+echo
+ 
+	gCHtml
+::
+lök
+('Upd©e',
+¨øy
+('commít/upd©e','id'=>
+$d©a
+->
+id
+)); ?> |
+
+38 <?
+php
+ 
+echo
+ 
+	gCHtml
+::
+lök
+('Dñëe',
+¨øy
+('commít/dñëe','id'=>
+$d©a
+->
+id
+),array('class'=>'delete')); ?> |
+
+39 <?
+php
+ 
+echo
+ 
+d©e
+('F j, Y \a\àh:òa',
+$d©a
+->
+¸óã_time
+); ?>
+
+40 </
+	gdiv
+>
+
+42 <
+div
+ 
+	g˛ass
+="content">
+
+43 <?
+php
+ 
+echo
+ 
+∆2br
+(
+CHtml
+::
+ícode
+(
+$d©a
+->
+c⁄ã¡
+)); ?>
+
+44 </
+	gdiv
+>
+
+46 </
+	gdiv
+><!-- 
+	gcommít
+ -->
+
+	@views/comment/index.php
+
+1 <?
+php
+
+
+2 
+	g$this
+->
+	gbªad¸umbs
+=
+¨øy
+(
+
+7 <
+	gh1
+>
+	gCommíts
+</h1>
+
+9 <?
+php
+ 
+	g$this
+->
+widgë
+('zii.widgës.CLi°Võw', 
+¨øy
+(
+
+10 'd©aProvidî'=>
+$d©aProvidî
+,
+
+	@views/comment/update.php
+
+1 <?
+php
+
+
+2 
+	g$this
+->
+	gbªad¸umbs
+=
+¨øy
+(
+
+3 'Commíts'=>
+¨øy
+('index'),
+
+4 'Upd©êCommíà#'.
+$modñ
+->
+id
+,
+
+8 <
+	gh1
+>
+Upd©e
+ 
+	gCommít
+ #<?
+php
+ 
+echo
+ 
+	g$modñ
+->
+	gid
+; ?></h1>
+
+10 <?
+php
+ 
+echo
+ 
+	g$this
+->
+ªndîP¨tül
+('_f‹m', 
+¨øy
+('modñ'=>
+$modñ
+)); ?>
+
+	@views/layouts/column1.php
+
+1 <?
+php
+ 
+	g$this
+->
+begöC⁄ã¡
+('/layouts/main'); ?>
+
+2 <
+div
+ 
+	g˛ass
+="container">
+
+3 <
+div
+ 
+id
+="content">
+
+4 <?
+php
+ 
+echo
+ 
+$c⁄ã¡
+; ?>
+
+5 </
+	gdiv
+><!-- 
+	gc⁄ã¡
+ -->
+
+6 </
+	gdiv
+>
+
+7 <?
+php
+ 
+	g$this
+->
+ídC⁄ã¡
+(); ?>
+
+	@views/layouts/column2.php
+
+1 <?
+php
+ 
+	g$this
+->
+begöC⁄ã¡
+('/layouts/main'); ?>
+
+2 <
+div
+ 
+	g˛ass
+="container">
+
+3 <
+div
+ 
+˛ass
+="span-18">
+
+4 <
+div
+ 
+id
+="content">
+
+5 <?
+php
+ 
+echo
+ 
+$c⁄ã¡
+; ?>
+
+6 </
+	gdiv
+><!-- 
+	gc⁄ã¡
+ -->
+
+7 </
+	gdiv
+>
+
+8 <
+div
+ 
+	g˛ass
+="span-6Üast">
+
+9 <
+div
+ 
+id
+="sidebar">
+
+10 <?
+php
+ if(!
+Yii
+::
+≠p
+()->
+u£r
+->
+isGue°
+Ë
+$this
+->
+widgë
+('UserMenu'); ?>
+
+12 <?
+php
+ 
+	g$this
+->
+widgë
+('TagCloud', 
+¨øy
+(
+
+13 'maxTags'=>
+Yii
+::
+≠p
+()->
+∑øms
+['tagCloudCount'],
+
+16 <?
+php
+ 
+	g$this
+->
+widgë
+('Re˚¡Commíts', 
+¨øy
+(
+
+17 'maxCommíts'=>
+Yii
+::
+≠p
+()->
+∑øms
+['recentCommentCount'],
+
+19 </
+	gdiv
+><!-- 
+	gsideb¨
+ -->
+
+20 </
+	gdiv
+>
+
+21 </
+	gdiv
+>
+
+22 <?
+php
+ 
+	g$this
+->
+ídC⁄ã¡
+(); ?>
+
+	@views/layouts/main.php
+
+1 <!
+DOCTYPE
+ 
+html
+ 
+	gPUBLIC
+ "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+2 <
+html
+ 
+	gxm s
+="hâp://www.w3.‹g/1999/xhtml" 
+xml
+:
+œng
+="en"Üang="en">
+
+3 <
+hód
+>
+
+4 <
+mëa
+ 
+hâp
+-
+equiv
+="C⁄ã¡-Ty≥" 
+c⁄ã¡
+="text/html; charset=utf-8" />
+
+5 <
+mëa
+ 
+«me
+="œnguage" 
+c⁄ã¡
+="en" />
+
+7 <!-- 
+bluïröt
+ 
+CSS
+ 
+‰amew‹k
+ -->
+
+8 <
+lök
+ 
+ªl
+="°yÀshìt" 
+ty≥
+="ãxt/css" 
+hªf
+="<?ph∞echÿYii::≠p()->ªque°->ba£Uæ; ?>/css/s¸ìn.css" 
+medü
+="screen,Örojection" />
+
+9 <
+lök
+ 
+ªl
+="°yÀshìt" 
+ty≥
+="ãxt/css" 
+hªf
+="<?ph∞echÿYii::≠p()->ªque°->ba£Uæ; ?>/css/¥öt.css" 
+medü
+="print" />
+
+10 <!--[
+…
+ 
+IE
+ 8]>
+
+11 <
+lök
+ 
+ªl
+="°yÀshìt" 
+ty≥
+="ãxt/css" 
+hªf
+="<?ph∞echÿYii::≠p()->ªque°->ba£Uæ; ?>/css/õ.css" 
+medü
+="screen,Örojection" />
+
+12 <![
+ídif
+]-->
+
+14 <
+lök
+ 
+ªl
+="°yÀshìt" 
+ty≥
+="ãxt/css" 
+hªf
+="<?phpÉcho Yii::app()->request->baseUrl; ?>/css/main.css" />
+
+15 <
+lök
+ 
+ªl
+="°yÀshìt" 
+ty≥
+="ãxt/css" 
+hªf
+="<?phpÉcho Yii::app()->request->baseUrl; ?>/css/form.css" />
+
+17 <
+tôÀ
+><?
+php
+ 
+echo
+ 
+CHtml
+::
+ícode
+(
+$this
+->
+∑geTôÀ
+); ?></
+	gtôÀ
+>
+
+18 </
+	ghód
+>
+
+20 <
+	gbody
+>
+
+22 <
+div
+ 
+	g˛ass
+="c⁄èöî" 
+id
+="page">
+
+24 <
+div
+ 
+id
+="header">
+
+25 <
+div
+ 
+id
+="logo"><?
+php
+ 
+echo
+ 
+CHtml
+::
+ícode
+(
+Yii
+::
+≠p
+()->
+«me
+); ?></
+	gdiv
+>
+
+26 </
+	gdiv
+><!-- 
+	ghódî
+ -->
+
+28 <
+div
+ 
+	gid
+="mainmenu">
+
+29 <?
+php
+ 
+$this
+->
+widgë
+('zii.widgës.CMíu',
+¨øy
+(
+
+30 'ôems'=>
+¨øy
+(
+
+31 
+¨øy
+('label'=>'Home', 'url'=>array('post/index')),
+
+32 
+¨øy
+('label'=>'About', 'url'=>array('site/page', 'view'=>'about')),
+
+33 
+¨øy
+('label'=>'Contact', 'url'=>array('site/contact')),
+
+34 
+¨øy
+('œbñ'=>'Logö', 'uæ'=>¨øy('sôe/logö'), 'visibÀ'=>
+Yii
+::
+≠p
+()->
+u£r
+->
+isGue°
+),
+
+35 
+¨øy
+('œbñ'=>'Logouà('.
+Yii
+::
+≠p
+()->
+u£r
+->
+«me
+.')', 'uæ'=>¨øy('sôe/logout'), 'visibÀ'=>!Yii::≠p()->u£r->
+isGue°
+)
+
+38 </
+	gdiv
+><!-- 
+	gmaömíu
+ -->
+
+40 <?
+php
+ 
+	g$this
+->
+widgë
+('zii.widgës.CBªad¸umbs', 
+¨øy
+(
+
+41 'löks'=>
+$this
+->
+bªad¸umbs
+,
+
+42 )); ?><!-- 
+	gbªad¸umbs
+ -->
+
+44 <?
+php
+ 
+echo
+ 
+	g$c⁄ã¡
+; ?>
+
+46 <
+div
+ 
+	gid
+="footer">
+
+47 
+C›yright
+ &
+c›y
+; <?
+php
+ 
+echo
+ 
+d©e
+('Y'); ?> 
+by
+ 
+My
+ 
+	gCom∑ny
+.<
+	gbr
+/>
+
+48 
+AŒ
+ 
+Rights
+ 
+	gRe£rved
+.<
+	gbr
+/>
+
+49 <?
+php
+ 
+echo
+ 
+	gYii
+::
+powîed
+(); ?>
+
+50 </
+	gdiv
+><!-- 
+	gfoŸî
+ -->
+
+52 </
+	gdiv
+><!-- 
+	g∑ge
+ -->
+
+54 </
+	gbody
+>
+
+55 </
+	ghtml
+>
+
+	@views/post/_comments.php
+
+1 <?
+php
+ 
+	$f‹óch
+(
+$commíts
+ 
+as
+ 
+$commít
+): ?>
+
+2 <
+div
+ 
+˛ass
+="commít" 
+id
+="c<?phpÉcho $comment->id; ?>">
+
+4 <?
+php
+ 
+echo
+ 
+CHtml
+::
+	`lök
+("#{$commít->id}", 
+$commít
+->
+	`gëUæ
+(
+$po°
+), 
+	`¨øy
+(
+
+9 <
+div
+ 
+˛ass
+="author">
+
+10 <?
+php
+ 
+echo
+ 
+$commít
+->
+auth‹Lök
+; ?> 
+ßys
+:
+
+11 </
+div
+>
+
+13 <
+div
+ 
+˛ass
+="time">
+
+14 <?
+php
+ 
+echo
+ 
+	`d©e
+('F j, Y \a\àh:òa',
+$commít
+->
+¸óã_time
+); ?>
+
+15 </
+div
+>
+
+17 <
+div
+ 
+˛ass
+="content">
+
+18 <?
+php
+ 
+echo
+ 
+	`∆2br
+(
+CHtml
+::
+	`ícode
+(
+$commít
+->
+c⁄ã¡
+)); ?>
+
+19 </
+div
+>
+
+21 </
+div
+><!-- 
+commít
+ -->
+
+22 <?
+php
+ 
+ídf‹óch
+; ?>
+
+	@views/post/_form.php
+
+1 <
+div
+ 
+	g˛ass
+="form">
+
+3 <?
+php
+ 
+$f‹m
+=
+$this
+->
+begöWidgë
+('CActiveForm'); ?>
+
+5 <
+p
+ 
+	g˛ass
+="nŸe">
+Fõlds
+ 
+wôh
+ <
+•™
+ 
+˛ass
+="ªquúed">*</•™> 
+¨e
+ 
+ªquúed
+.</p>
+
+7 <?
+php
+ 
+echo
+ 
+CHtml
+::
+îr‹Summ¨y
+(
+$modñ
+); ?>
+
+9 <
+div
+ 
+	g˛ass
+="row">
+
+10 <?
+php
+ 
+echo
+ 
+$f‹m
+->
+œbñEx
+(
+$modñ
+,'title'); ?>
+
+11 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+ãxtFõld
+(
+$modñ
+,'tôÀ',
+¨øy
+('size'=>80,'maxlength'=>128)); ?>
+
+12 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+îr‹
+(
+$modñ
+,'title'); ?>
+
+13 </
+	gdiv
+>
+
+15 <
+div
+ 
+	g˛ass
+="row">
+
+16 <?
+php
+ 
+echo
+ 
+$f‹m
+->
+œbñEx
+(
+$modñ
+,'content'); ?>
+
+17 <?
+php
+ 
+echo
+ 
+	gCHtml
+::
+a˘iveTextAªa
+(
+$modñ
+,'c⁄ã¡',
+¨øy
+('rows'=>10, 'cols'=>70)); ?>
+
+18 <
+p
+ 
+	g˛ass
+="höt">
+You
+ 
+may
+ 
+u£
+ <
+a
+ 
+èrgë
+="_bœnk" 
+hªf
+="hâp://d¨ögfúebÆl.√t/¥oje˘s/m¨kdown/sy¡ax">
+M¨kdown
+ 
+sy¡ax
+</a>.</p>
+
+19 <?
+php
+ 
+echo
+ 
+$f‹m
+->
+îr‹
+(
+$modñ
+,'content'); ?>
+
+20 </
+	gdiv
+>
+
+22 <
+div
+ 
+	g˛ass
+="row">
+
+23 <?
+php
+ 
+echo
+ 
+$f‹m
+->
+œbñEx
+(
+$modñ
+,'tags'); ?>
+
+24 <?
+php
+ 
+	g$this
+->
+widgë
+('CAutoCom∂ëe', 
+¨øy
+(
+
+25 'modñ'=>
+$modñ
+,
+
+27 'uæ'=>
+¨øy
+('suggestTags'),
+
+28 'mu…ùÀ'=>
+åue
+,
+
+29 'htmlO±i⁄s'=>
+¨øy
+('size'=>50),
+
+31 <
+p
+ 
+	g˛ass
+="höt">
+PÀa£
+ 
+£∑øã
+ 
+dif„ª¡
+ 
+ègs
+ 
+wôh
+ 
+commas
+.</p>
+
+32 <?
+php
+ 
+echo
+ 
+$f‹m
+->
+îr‹
+(
+$modñ
+,'tags'); ?>
+
+33 </
+	gdiv
+>
+
+35 <
+div
+ 
+	g˛ass
+="row">
+
+36 <?
+php
+ 
+echo
+ 
+$f‹m
+->
+œbñEx
+(
+$modñ
+,'status'); ?>
+
+37 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+dr›DownLi°
+(
+$modñ
+,'°©us',
+Lookup
+::
+ôems
+('PostStatus')); ?>
+
+38 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+îr‹
+(
+$modñ
+,'status'); ?>
+
+39 </
+	gdiv
+>
+
+41 <
+div
+ 
+	g˛ass
+="row buttons">
+
+42 <?
+php
+ 
+echo
+ 
+CHtml
+::
+submôBuâ⁄
+(
+$modñ
+->
+isNewRec‹d
+ ? 'Create' : 'Save'); ?>
+
+43 </
+	gdiv
+>
+
+45 <?
+php
+ 
+	g$this
+->
+ídWidgë
+(); ?>
+
+47 </
+	gdiv
+><!-- 
+	gf‹m
+ -->
+
+	@views/post/_view.php
+
+1 <
+div
+ 
+	g˛ass
+="post">
+
+2 <
+div
+ 
+˛ass
+="title">
+
+3 <?
+php
+ 
+echo
+ 
+CHtml
+::
+lök
+(CHtml::
+ícode
+(
+$d©a
+->
+tôÀ
+), $d©a->
+uæ
+); ?>
+
+4 </
+	gdiv
+>
+
+5 <
+div
+ 
+	g˛ass
+="author">
+
+6 
+po°ed
+ 
+by
+ <?
+php
+ 
+echo
+ 
+$d©a
+->
+auth‹
+->
+u£∫ame
+ . ' o¿' . 
+d©e
+('F j, Y',$d©a->
+¸óã_time
+); ?>
+
+7 </
+	gdiv
+>
+
+8 <
+div
+ 
+	g˛ass
+="content">
+
+9 <?
+php
+
+
+10 
+$this
+->
+begöWidgë
+('CM¨kdown', 
+¨øy
+('purifyOuçut'=>
+åue
+));
+
+11 
+echo
+ 
+	g$d©a
+->
+	gc⁄ã¡
+;
+
+12 
+	g$this
+->
+ídWidgë
+();
+
+14 </
+	gdiv
+>
+
+15 <
+div
+ 
+	g˛ass
+="nav">
+
+16 <
+b
+>
+Tags
+:</b>
+
+17 <?
+php
+ 
+echo
+ 
+im∂ode
+(', ', 
+$d©a
+->
+ègLöks
+); ?>
+
+18 <
+	gbr
+/>
+
+19 <?
+php
+ 
+echo
+ 
+	gCHtml
+::
+lök
+('PîmÆök', 
+$d©a
+->
+uæ
+); ?> |
+
+20 <?
+php
+ 
+echo
+ 
+	gCHtml
+::
+lök
+("Commít†({$d©a->commítCou¡})",
+$d©a
+->
+uæ
+.'#comments'); ?> |
+
+21 
+La°
+ 
+upd©ed
+ 
+	g⁄
+ <?
+php
+ 
+echo
+ 
+d©e
+('F j, Y',
+$d©a
+->
+upd©e_time
+); ?>
+
+22 </
+	gdiv
+>
+
+23 </
+	gdiv
+>
+
+	@views/post/admin.php
+
+1 <?
+php
+
+
+2 
+	g$this
+->
+	gbªad¸umbs
+=
+¨øy
+(
+
+6 <
+	gh1
+>
+M™age
+ 
+	gPo°s
+</h1>
+
+8 <?
+php
+ 
+	g$this
+->
+widgë
+('zii.widgës.grid.CGridVõw', 
+¨øy
+(
+
+9 'd©aProvidî'=>
+$modñ
+->
+£¨ch
+(),
+
+10 'fûãr'=>
+$modñ
+,
+
+11 'cﬁumns'=>
+¨øy
+(
+
+12 
+¨øy
+(
+
+17 
+¨øy
+(
+
+20 'fûãr'=>
+Lookup
+::
+ôems
+('PostStatus'),
+
+22 
+¨øy
+(
+
+25 'fûãr'=>
+Ál£
+,
+
+27 
+¨øy
+(
+
+	@views/post/create.php
+
+1 <?
+php
+
+
+2 
+	g$this
+->
+	gbªad¸umbs
+=
+¨øy
+(
+
+6 <
+	gh1
+>
+Cª©e
+ 
+	gPo°
+</h1>
+
+8 <?
+php
+ 
+echo
+ 
+	g$this
+->
+ªndîP¨tül
+('_f‹m', 
+¨øy
+('modñ'=>
+$modñ
+)); ?>
+
+	@views/post/index.php
+
+1 <?
+php
+ if(!
+em±y
+(
+$_GET
+['tag'])): ?>
+
+2 <
+h1
+>
+Po°s
+ 
+Tagged
+ 
+wôh
+ <
+i
+><?
+php
+ 
+echo
+ 
+CHtml
+::
+ícode
+(
+$_GET
+['èg']); ?></
+	gi
+></
+	gh1
+>
+
+3 <?
+php
+ 
+	gídif
+; ?>
+
+5 <?
+php
+ 
+	g$this
+->
+widgë
+('zii.widgës.CLi°Võw', 
+¨øy
+(
+
+6 'd©aProvidî'=>
+$d©aProvidî
+,
+
+	@views/post/update.php
+
+1 <?
+php
+
+
+2 
+	g$this
+->
+	gbªad¸umbs
+=
+¨øy
+(
+
+3 
+$modñ
+->
+tôÀ
+=>$modñ->
+uæ
+,
+
+8 <
+	gh1
+>
+	gUpd©e
+ <
+	gi
+><?
+php
+ 
+echo
+ 
+	gCHtml
+::
+ícode
+(
+$modñ
+->
+tôÀ
+); ?></i></h1>
+
+10 <?
+php
+ 
+echo
+ 
+	g$this
+->
+ªndîP¨tül
+('_f‹m', 
+¨øy
+('modñ'=>
+$modñ
+)); ?>
+
+	@views/post/view.php
+
+1 <?
+php
+
+
+2 
+	g$this
+->
+	gbªad¸umbs
+=
+¨øy
+(
+
+3 
+$modñ
+->
+tôÀ
+,
+
+5 
+	g$this
+->
+	g∑geTôÀ
+=
+$modñ
+->
+tôÀ
+;
+
+8 <?
+php
+ 
+	g$this
+->
+ªndîP¨tül
+('_võw', 
+¨øy
+(
+
+9 'd©a'=>
+$modñ
+,
+
+12 <
+div
+ 
+	gid
+="comments">
+
+13 <?
+php
+ if(
+$modñ
+->
+commítCou¡
+>=1): ?>
+
+14 <
+h3
+>
+
+15 <?
+php
+ 
+echo
+ 
+$modñ
+->
+commítCou¡
+>1 ? $model->commentCount . ' comments' : 'One comment'; ?>
+
+16 </
+	gh3
+>
+
+18 <?
+php
+ 
+	g$this
+->
+ªndîP¨tül
+('_commíts',
+¨øy
+(
+
+19 'po°'=>
+$modñ
+,
+
+20 'commíts'=>
+$modñ
+->
+commíts
+,
+
+22 <?
+php
+ 
+	gídif
+; ?>
+
+24 <
+	gh3
+>
+Lóve
+ 
+a
+ 
+	gCommít
+</h3>
+
+26 <?
+php
+ if(
+	gYii
+::
+≠p
+()->
+u£r
+->
+hasFœsh
+('commentSubmitted')): ?>
+
+27 <
+div
+ 
+˛ass
+="flash-success">
+
+28 <?
+php
+ 
+echo
+ 
+Yii
+::
+≠p
+()->
+u£r
+->
+gëFœsh
+('commentSubmitted'); ?>
+
+29 </
+	gdiv
+>
+
+30 <?
+php
+ : ?>
+
+31 <?
+php
+ 
+$this
+->
+ªndîP¨tül
+('/commít/_f‹m',
+¨øy
+(
+
+32 'modñ'=>
+$commít
+,
+
+34 <?
+php
+ 
+	gídif
+; ?>
+
+36 </
+	gdiv
+><!-- 
+	gcommíts
+ -->
+
+	@views/site/contact.php
+
+1 <?
+php
+
+
+2 
+	g$this
+->
+	g∑geTôÀ
+=
+Yii
+::
+≠p
+()->
+«me
+ . ' - Contact Us';
+
+3 
+	g$this
+->
+	gbªad¸umbs
+=
+¨øy
+(
+
+8 <
+	gh1
+>
+C⁄è˘
+ 
+	gUs
+</h1>
+
+10 <?
+php
+ if(
+	gYii
+::
+≠p
+()->
+u£r
+->
+hasFœsh
+('contact')): ?>
+
+12 <
+div
+ 
+˛ass
+="flash-success">
+
+13 <?
+php
+ 
+echo
+ 
+Yii
+::
+≠p
+()->
+u£r
+->
+gëFœsh
+('contact'); ?>
+
+14 </
+	gdiv
+>
+
+16 <?
+php
+ : ?>
+
+18 <
+p
+>
+
+19 
+If
+ 
+you
+ 
+have
+ 
+busöess
+ 
+öquúõs
+ 
+‹
+ 
+Ÿhî
+ 
+que°i⁄s
+, 
+∂ó£
+ 
+fûl
+ 
+out
+ 
+the
+ 
+fﬁlowög
+ 
+f‹m
+ 
+to
+ 
+c⁄è˘
+ 
+	gus
+. 
+Th™k
+ 
+	gyou
+.
+
+20 </
+	gp
+>
+
+22 <
+div
+ 
+	g˛ass
+="form">
+
+24 <?
+php
+ 
+$f‹m
+=
+$this
+->
+begöWidgë
+('CActiveForm'); ?>
+
+26 <
+p
+ 
+	g˛ass
+="nŸe">
+Fõlds
+ 
+wôh
+ <
+•™
+ 
+˛ass
+="ªquúed">*</•™> 
+¨e
+ 
+ªquúed
+.</p>
+
+28 <?
+php
+ 
+echo
+ 
+$f‹m
+->
+îr‹Summ¨y
+(
+$modñ
+); ?>
+
+30 <
+div
+ 
+	g˛ass
+="row">
+
+31 <?
+php
+ 
+echo
+ 
+$f‹m
+->
+œbñEx
+(
+$modñ
+,'name'); ?>
+
+32 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+ãxtFõld
+(
+$modñ
+,'name'); ?>
+
+33 </
+	gdiv
+>
+
+35 <
+div
+ 
+	g˛ass
+="row">
+
+36 <?
+php
+ 
+echo
+ 
+$f‹m
+->
+œbñEx
+(
+$modñ
+,'email'); ?>
+
+37 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+ãxtFõld
+(
+$modñ
+,'email'); ?>
+
+38 </
+	gdiv
+>
+
+40 <
+div
+ 
+	g˛ass
+="row">
+
+41 <?
+php
+ 
+echo
+ 
+$f‹m
+->
+œbñEx
+(
+$modñ
+,'subject'); ?>
+
+42 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+ãxtFõld
+(
+$modñ
+,'subje˘',
+¨øy
+('size'=>60,'maxlength'=>128)); ?>
+
+43 </
+	gdiv
+>
+
+45 <
+div
+ 
+	g˛ass
+="row">
+
+46 <?
+php
+ 
+echo
+ 
+$f‹m
+->
+œbñEx
+(
+$modñ
+,'body'); ?>
+
+47 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+ãxtAªa
+(
+$modñ
+,'body',
+¨øy
+('rows'=>6, 'cols'=>50)); ?>
+
+48 </
+	gdiv
+>
+
+50 <?
+php
+ if(
+	gCC≠tcha
+::
+	$checkRequúemíts
+()): ?>
+
+51 <
+div
+ 
+˛ass
+="row">
+
+52 <?
+php
+ 
+echo
+ 
+$f‹m
+->
+	`œbñEx
+(
+$modñ
+,'verifyCode'); ?>
+
+53 <
+div
+>
+
+54 <?
+php
+ 
+$this
+->
+	`widgë
+('CCaptcha'); ?>
+
+55 <?
+php
+ 
+echo
+ 
+$f‹m
+->
+	`ãxtFõld
+(
+$modñ
+,'verifyCode'); ?>
+
+56 </
+div
+>
+
+57 <
+div
+ 
+˛ass
+="höt">
+PÀa£
+ 
+íãr
+ 
+the
+ 
+Àâîs
+ 
+as
+ 
+they
+ 
+¨e
+ 
+shown
+ 
+ö
+Åhê
+image
+ 
+above
+.
+
+58 <
+br
+/>
+Lëãrs
+ 
+¨e
+ 
+nŸ
+ -
+£nsôive
+.</
+div
+>
+
+59 </
+div
+>
+
+60 <?
+php
+ 
+ídif
+; ?>
+
+62 <
+div
+ 
+˛ass
+="row submit">
+
+63 <?
+php
+ 
+echo
+ 
+CHtml
+::
+	`submôBuâ⁄
+('Submit'); ?>
+
+64 </
+div
+>
+
+66 <?
+php
+ 
+$this
+->
+	`ídWidgë
+(); ?>
+
+68 </
+div
+><!-- 
+f‹m
+ -->
+
+70 <?
+php
+ 
+ídif
+; ?>
+
+	@views/site/error.php
+
+1 <?
+php
+
+
+2 
+	g$this
+->
+	g∑geTôÀ
+=
+Yii
+::
+≠p
+()->
+«me
+ . ' - Error';
+
+3 
+	g$this
+->
+	gbªad¸umbs
+=
+¨øy
+(
+
+8 <
+	gh2
+>
+	gEº‹
+ <?
+php
+ 
+echo
+ 
+	g$code
+; ?></h2>
+
+10 <
+div
+ 
+	g˛ass
+="error">
+
+11 <?
+php
+ 
+echo
+ 
+CHtml
+::
+ícode
+(
+$mesßge
+); ?>
+
+12 </
+	gdiv
+>
+
+	@views/site/login.php
+
+1 <?
+php
+
+
+2 
+	g$this
+->
+	g∑geTôÀ
+=
+Yii
+::
+≠p
+()->
+«me
+ . ' - Login';
+
+3 
+	g$this
+->
+	gbªad¸umbs
+=
+¨øy
+(
+
+8 <
+	gh1
+>
+	gLogö
+</h1>
+
+10 <
+	gp
+>
+PÀa£
+ 
+fûl
+ 
+out
+ 
+the
+ 
+fﬁlowög
+ 
+f‹m
+ 
+wôh
+ 
+your
+ 
+logö
+ 
+	g¸edítüls
+:</
+p
+>
+
+12 <
+div
+ 
+˛ass
+="form">
+
+13 <?
+php
+ 
+$f‹m
+=
+$this
+->
+begöWidgë
+('CA˘iveF‹m', 
+¨øy
+(
+
+15 'íabÀAjaxVÆid©i⁄'=>
+åue
+,
+
+18 <
+p
+ 
+	g˛ass
+="nŸe">
+Fõlds
+ 
+wôh
+ <
+•™
+ 
+˛ass
+="ªquúed">*</•™> 
+¨e
+ 
+ªquúed
+.</p>
+
+20 <
+div
+ 
+˛ass
+="row">
+
+21 <?
+php
+ 
+echo
+ 
+$f‹m
+->
+œbñEx
+(
+$modñ
+,'username'); ?>
+
+22 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+ãxtFõld
+(
+$modñ
+,'username'); ?>
+
+23 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+îr‹
+(
+$modñ
+,'username'); ?>
+
+24 </
+	gdiv
+>
+
+26 <
+div
+ 
+	g˛ass
+="row">
+
+27 <?
+php
+ 
+echo
+ 
+$f‹m
+->
+œbñEx
+(
+$modñ
+,'password'); ?>
+
+28 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+∑ssw‹dFõld
+(
+$modñ
+,'password'); ?>
+
+29 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+îr‹
+(
+$modñ
+,'password'); ?>
+
+30 <
+p
+ 
+	g˛ass
+="hint">
+
+31 
+Höt
+: 
+You
+ 
+may
+ 
+logö
+ 
+wôh
+ <
+â
+>
+demo
+/demo</tt>.
+
+32 </
+p
+>
+
+33 </
+div
+>
+
+35 <
+div
+ 
+˛ass
+="rowÑememberMe">
+
+36 <?
+php
+ 
+echo
+ 
+$f‹m
+->
+checkBox
+(
+$modñ
+,'rememberMe'); ?>
+
+37 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+œbñ
+(
+$modñ
+,'rememberMe'); ?>
+
+38 <?
+php
+ 
+echo
+ 
+	g$f‹m
+->
+îr‹
+(
+$modñ
+,'rememberMe'); ?>
+
+39 </
+	gdiv
+>
+
+41 <
+div
+ 
+	g˛ass
+="row submit">
+
+42 <?
+php
+ 
+echo
+ 
+CHtml
+::
+submôBuâ⁄
+('Login'); ?>
+
+43 </
+	gdiv
+>
+
+45 <?
+php
+ 
+	g$this
+->
+ídWidgë
+(); ?>
+
+46 </
+	gdiv
+><!-- 
+	gf‹m
+ -->
+
+	@views/site/pages/about.php
+
+1 <?
+php
+
+
+2 
+	g$this
+->
+	g∑geTôÀ
+=
+Yii
+::
+≠p
+()->
+«me
+ . ' - About';
+
+3 
+	g$this
+->
+	gbªad¸umbs
+=
+¨øy
+(
+
+7 <
+	gh1
+>
+	gAbout
+</h1>
+
+9 <
+	gp
+>
+This
+ 
+is
+ 
+	gthe
+ "about" 
+∑ge
+ 
+my
+ 
+blog
+ 
+	gsôe
+.</p>
+
+	@yiic.php
+
+1 <?
+php
+
+
+4 
+	g$yiic
+=
+dú«me
+(
+__FILE__
+).'/../../../framework/yiic.php';
+
+5 
+	g$c⁄fig
+=
+dú«me
+(
+__FILE__
+).'/config/console.php';
+
+7 
+ªquúe_⁄˚
+(
+$yiic
+);
+
+	@
+1
+.
+0
+57
+1355
+components/Controller.php
+components/RecentComments.php
+components/TagCloud.php
+components/UserIdentity.php
+components/UserMenu.php
+components/views/recentComments.php
+components/views/userMenu.php
+config/console.php
+config/main.php
+config/params.php
+config/test.php
+controllers/CommentController.php
+controllers/PostController.php
+controllers/SiteController.php
+data/dbgen.php
+models/Comment.php
+models/ContactForm.php
+models/LoginForm.php
+models/Lookup.php
+models/Post.php
+models/Tag.php
+models/User.php
+tests/WebTestCase.php
+tests/bootstrap.php
+tests/fixtures/tbl_comment.php
+tests/fixtures/tbl_lookup.php
+tests/fixtures/tbl_post.php
+tests/fixtures/tbl_tag.php
+tests/fixtures/tbl_user.php
+tests/functional/CommentTest.php
+tests/functional/PostTest.php
+tests/functional/SiteTest.php
+tests/unit/CommentTest.php
+tests/unit/LookupTest.php
+tests/unit/PostTest.php
+tests/unit/TagTest.php
+tests/unit/UserTest.php
+views/comment/_form.php
+views/comment/_view.php
+views/comment/index.php
+views/comment/update.php
+views/layouts/column1.php
+views/layouts/column2.php
+views/layouts/main.php
+views/post/_comments.php
+views/post/_form.php
+views/post/_view.php
+views/post/admin.php
+views/post/create.php
+views/post/index.php
+views/post/update.php
+views/post/view.php
+views/site/contact.php
+views/site/error.php
+views/site/login.php
+views/site/pages/about.php
+yiic.php

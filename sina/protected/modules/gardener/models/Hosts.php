@@ -20,8 +20,15 @@
  * @property integer $datacenter_id
  * @property integer $device_type_id
  */
-class Hosts extends CActiveRecord
+class Hosts extends MyActiveRecord
 {
+
+	protected function setDatabase()
+	{
+		self::$db = Yii::app()->gardener_db;
+	}
+
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -156,6 +163,9 @@ class Hosts extends CActiveRecord
 	{
 		if($model == 'reports')
 			return   CHtml::listData($this->model()->findAll(), 'id', 'host_name');
+		else if($model == 'services')
+			return  CHtml::listData($this->model()->findAll(), 'id', 'host_name');
+
 	}
 
 }

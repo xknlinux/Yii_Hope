@@ -52,10 +52,18 @@ class DevicesController extends Controller
 
 	}
 
+	public function actionDd()
+	{
+		$this->render('dd');
+	}
+
 	public function actionDel($id)
 	{
 		if(SimpleOperate::NoLive($id, 'Hosts', 'device_id') == 'n')
 			$this->loadModel($id)->delete();
+		else 
+			$this->redirect(array('/gardener/devices/dd'));
+
 
 		$this->redirect(array('/gardener/Devices/index'));
 	}

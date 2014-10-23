@@ -15,8 +15,14 @@
  * @property string $processor
  * @property integer $problem_type
  */
-class Reports extends CActiveRecord
+class Reports extends MyActiveRecord
 {
+
+	protected function setDatabase()
+	{
+		self::$db = Yii::app()->gardener_db;
+	}
+
 	/**
 	 * @return string the associated database table name
 	 */

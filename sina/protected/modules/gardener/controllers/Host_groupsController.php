@@ -51,10 +51,18 @@ class Host_groupsController extends Controller
 
 	}
 
+	public function actionDd()
+	{
+		$this->render('dd');
+	}
+
 	public function actionDel($id)
 	{
 		if(SimpleOperate::NoLive($id, 'Hosts', 'host_group_id') == 'n')
 			$this->loadModel($id)->delete();
+		else 
+			$this->redirect(array('/gardener/host_groups/dd'));
+
 
 		$this->redirect(array('/gardener/host_groups/index'));
 	}

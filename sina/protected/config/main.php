@@ -24,6 +24,7 @@ return array(
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
 		'gardener',
+		'housekeeper',
 		
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
@@ -62,14 +63,24 @@ return array(
 		),*/
 		// uncomment the following to use a MySQL database
 		
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=gardener',
+		'housekeeper_db'=>array(
+			'class'=>'CDbConnection',
+			'connectionString' => 'mysql:host=localhost;dbname=housekeeper',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => 'kenan',
 			'charset' => 'utf8',
 		),
 		
+		'gardener_db'=>array(
+			'class'=>'CDbConnection',
+			'connectionString' => 'mysql:host=localhost;dbname=gardener',
+			'emulatePrepare' => true,
+			'username' => 'root',
+			'password' => 'kenan',
+			'charset' => 'utf8',
+		),
+
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',

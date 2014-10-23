@@ -8,8 +8,15 @@
  * @property integer $host_id
  * @property integer $tag_id
  */
-class HostTags extends CActiveRecord
+class HostTags extends MyActiveRecord
 {
+
+	protected function setDatabase()
+	{
+		self::$db = Yii::app()->gardener_db;
+	}
+
+
 	/**
 	 * @return string the associated database table name
 	 */

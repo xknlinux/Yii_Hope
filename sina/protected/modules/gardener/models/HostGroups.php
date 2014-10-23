@@ -9,8 +9,15 @@
  * @property string $manager
  * @property string $description
  */
-class HostGroups extends CActiveRecord
+class HostGroups extends MyActiveRecord
 {
+
+	protected function setDatabase()
+	{
+		self::$db = Yii::app()->gardener_db;
+	}
+
+
 	/**
 	 * @return string the associated database table name
 	 */

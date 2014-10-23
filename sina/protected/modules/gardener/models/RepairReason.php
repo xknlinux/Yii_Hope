@@ -7,8 +7,15 @@
  * @property integer $id
  * @property string $reason
  */
-class RepairReason extends CActiveRecord
+class RepairReason extends MyActiveRecord
 {
+
+	protected function setDatabase()
+	{
+		self::$db = Yii::app()->gardener_db;
+	}
+
+
 	/**
 	 * @return string the associated database table name
 	 */

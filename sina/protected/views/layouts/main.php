@@ -59,8 +59,11 @@
 
 									array('label'=>'reports',
 										'url'=>array('/gardener/reports/index'),),
+
+									array('label'=>'tags',
+										'url'=>array('/gardener/tags/index'),),
 									)),
-							array('label'=>'服务信息', 'url'=>'#'),
+							array('label'=>'服务信息', 'url'=>array('/housekeeper/services/index'),),
 							array('label'=>'一键部署', 'url'=>'#'),
 							),
 						),

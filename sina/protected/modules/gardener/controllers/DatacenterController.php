@@ -51,10 +51,17 @@ class DatacenterController extends Controller
 
 	}
 
+	public function actionDd()
+	{
+		$this->render('dd');
+	}
+
 	public function actionDel($id)
 	{
 		if(SimpleOperate::NoLive($id, 'Devices', 'datacenter_id') == 'n' && SimpleOperate::NoLive($id, 'Hosts', 'datacenter_id') == 'n')
 			$this->loadModel($id)->delete();
+		else 
+			$this->redirect(array('/gardener/Datacenter/dd'));
 
 		$this->redirect(array('/gardener/Datacenter/index'));
 	}

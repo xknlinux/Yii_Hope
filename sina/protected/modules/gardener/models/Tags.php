@@ -7,8 +7,14 @@
  * @property integer $id
  * @property string $tagname
  */
-class Tags extends CActiveRecord
+class Tags extends MyActiveRecord
 {
+
+	protected function setDatabase()
+	{
+		self::$db = Yii::app()->gardener_db;
+	}
+
 	/**
 	 * @return string the associated database table name
 	 */

@@ -51,10 +51,17 @@ class Device_typesController extends Controller
 					));
 	}
 
+	public function actionDd()
+	{
+		$this->render('dd');
+	}
+
 	public function actionDel($id)
 	{
 		if(SimpleOperate::NoLive($id, 'Devices', 'type_id') == 'n' && SimpleOperate::NoLive($id, 'Hosts', 'device_type_id') ==     'n')
 			$this->loadModel($id)->delete();
+		else 
+			$this->redirect(array('/gardener/device_types/dd'));
 
 		$this->redirect(array('/gardener/Device_types/index'));
 	}
